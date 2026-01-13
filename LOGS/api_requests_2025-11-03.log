@@ -1,0 +1,18 @@
+[2025-11-03T07:07:13.780Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2025-11-03T07:07:13.780Z"
+}
+[2025-11-03T07:44:40.102Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2025-11-03T07:44:40.102Z"
+}
+[2025-11-03T07:46:23.894Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2025-11-03T07:46:23.894Z"
+}

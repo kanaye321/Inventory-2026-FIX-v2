@@ -1,0 +1,36 @@
+[2026-01-07T07:30:58.351Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T07:30:58.351Z"
+}
+[2026-01-07T07:59:21.011Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T07:59:21.011Z"
+}
+[2026-01-07T08:00:05.054Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T08:00:05.054Z"
+}
+[2026-01-07T08:05:48.581Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T08:05:48.581Z"
+}
+[2026-01-07T08:09:49.357Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T08:09:49.357Z"
+}
+[2026-01-07T09:37:16.411Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2026-01-07T09:37:16.411Z"
+}

@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRPH-MIS Administrator Guide & Project Setup</title>
+    <style>
+        /* Confluence-style CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #172b4d;
+            background-color: #f4f5f7;
+        }
+
+        .confluence-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #0052cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: #f4f5f7;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dfe1e6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #0052cc;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background-color: #e4edfc;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #0052cc;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0052cc;
+        }
+
+        .section h3 {
+            color: #172b4d;
+            font-size: 1.5rem;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #505f79;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .info-panel {
+            background: #e3fcef;
+            border-left: 4px solid #00875a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+
+        .warning-panel {
+            background: #fff4e6;
+            border-left: 4px solid #ff8b00;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+
+        .error-panel {
+            background: #ffebe6;
+            border-left: 4px solid #de350b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+
+        .tip-panel {
+            background: #e6fcff;
+            border-left: 4px solid #00b8d9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+
+        .code-block {
+            background: #f4f5f7;
+            border: 1px solid #dfe1e6;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #0052cc;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border: 1px solid #dfe1e6;
+            border-radius: 6px;
+            padding: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 8px rgba(9, 30, 66, 0.25);
+        }
+
+        .feature-card h4 {
+            color: #0052cc;
+            margin-bottom: 10px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #dfe1e6;
+        }
+
+        th, td {
+            border: 1px solid #dfe1e6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f5f7;
+            font-weight: 600;
+            color: #172b4d;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0052cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background: #0747a6;
+        }
+
+        .button.secondary {
+            background: #6b778c;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dfe1e6;
+            border-radius: 3px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(9, 30, 66, 0.15);
+        }
+
+        .toc {
+            background: #f4f5f7;
+            border: 1px solid #dfe1e6;
+            border-radius: 3px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #0052cc;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 8px 0;
+        }
+
+        .toc a {
+            color: #0052cc;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            background: #f4f5f7;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #dfe1e6;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confluence-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔧 SRPH-MIS Administrator Guide</h1>
+            <p>Complete Setup, Configuration & Management Manual</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <div class="nav-links">
+                <a href="#quick-start">Quick Start</a>
+                <a href="#installation">Installation</a>
+                <a href="#configuration">Configuration</a>
+                <a href="#user-management">User Management</a>
+                <a href="#system-admin">System Admin</a>
+                <a href="#monitoring">Monitoring</a>
+                <a href="#backup">Backup & Recovery</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>📋 Administrator Table of Contents</h3>
+                <ul>
+                    <li><a href="#quick-start">1. Quick Start Guide</a></li>
+                    <li><a href="#installation">2. Installation & Deployment</a></li>
+                    <li><a href="#configuration">3. System Configuration</a></li>
+                    <li><a href="#user-management">4. User Management</a></li>
+                    <li><a href="#system-admin">5. System Administration</a></li>
+                    <li><a href="#monitoring">6. Monitoring & Discovery</a></li>
+                    <li><a href="#backup">7. Backup & Recovery</a></li>
+                    <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1: Quick Start -->
+            <div id="quick-start" class="section">
+                <h2>1. 🚀 Quick Start Guide</h2>
+
+                <div class="warning-panel">
+                    <strong>⚠️ Prerequisites:</strong><br>
+                    • Node.js 18+ or 20+ installed<br>
+                    • Git (for version control)<br>
+                    • Modern web browser (Chrome, Firefox, Edge)<br>
+                    • Administrative access to server/system
+                </div>
+
+                <h3>Fastest Setup (Local Development)</h3>
+                <div class="info-panel">
+                    <strong>🎯 Local Development:</strong><br>
+                    For quick setup, clone the repository and run the project on your local machine.
+                </div>
+
+                <ol class="step-list">
+                    <li>
+                        <strong>Navigate to Application Directory</strong><br>
+                        <div class="code-block">
+cd "c:/MIS Inventory/Inventory Server - Port 3000"
+                        </div>
+                        Or for the Port 5000 version:
+                        <div class="code-block">
+cd "c:/MIS Inventory/Inventory Server - Port 5000"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Install Dependencies</strong><br>
+                        <div class="code-block">npm install</div>
+                    </li>
+                    <li>
+                        <strong>Configure Environment</strong><br>
+                        Create a <code>.env</code> file with your settings:
+                        <div class="code-block">
+DATABASE_URL=postgresql://user:password@localhost:5432/srph_mis
+SESSION_SECRET=your-secure-session-secret
+NODE_ENV=development
+PORT=3000
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Start Development Server</strong><br>
+                        <div class="code-block">npm run dev</div>
+                    </li>
+                    <li>
+                        <strong>Access Application</strong><br>
+                        Open browser to: <code>http://localhost:3000</code>
+                    </li>
+                    <li>
+                        <strong>Initial Login</strong><br>
+                        Use the default administrator credentials:
+                        <div class="code-block">
+Username: admin
+Password: admin123
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Change Default Password</strong><br>
+                        Navigate to Profile → Settings and update the default password immediately.
+                    </li>
+                </ol>
+
+                <div class="tip-panel">
+                    <strong>💡 Pro Tip:</strong> The system uses in-memory storage by default for development. For production, configure a PostgreSQL database in the environment variables.
+                </div>
+            </div>
+
+            <!-- Section 2: Installation & Deployment -->
+            <div id="installation" class="section">
+                <h2>2. 🏗️ Installation & Deployment</h2>
+
+                <h3>Local Deployment (Recommended)</h3>
+                <div class="info-panel">
+                    <strong>✅ Local Advantages:</strong><br>
+                    • Full control over the environment<br>
+                    • Direct access to logs and configuration<br>
+                    • Seamless integration with existing infrastructure
+                </div>
+
+                <h4>Setting Up for Production Locally</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Configure Environment Variables</strong><br>
+                        Create a <code>.env</code> file in the project root:
+                        <div class="code-block">
+DATABASE_URL=your_production_database_url
+SESSION_SECRET=your_super_secure_secret_key
+NODE_ENV=production
+PORT=3000
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Set Up Database</strong><br>
+                        Use PostgreSQL or your preferred database:
+                        <ul>
+                            <li>Install PostgreSQL server</li>
+                            <li>Create a database and user for SRPH-MIS</li>
+                            <li>Update <code>DATABASE_URL</code> with connection details</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Build the Application</strong><br>
+                        Run the build command:
+                        <div class="code-block">npm run build</div>
+                    </li>
+                    <li>
+                        <strong>Start the Production Server</strong><br>
+                        Run the production script:
+                        <div class="code-block">npm run start</div>
+                    </li>
+                </ol>
+
+                <h3>Windows Server Deployment</h3>
+                <div class="warning-panel">
+                    <strong>⚠️ Windows Server Requirements:</strong><br>
+                    • Windows Server 2019/2022<br>
+                    • Node.js 18+ LTS<br>
+                    • IIS (optional, for reverse proxy)<br>
+                    • PostgreSQL 12+ (for production database)
+                </div>
+
+                <h4>Windows Server Setup Steps</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Install Node.js</strong><br>
+                        Download and install Node.js LTS from <code>nodejs.org</code>
+                    </li>
+                    <li>
+                        <strong>Navigate to Application Directory</strong><br>
+                        <div class="code-block">
+cd "c:\MIS Inventory\Inventory Server - Port 3000"
+                        </div>
+                        Or for the Port 5000 version:
+                        <div class="code-block">
+cd "c:\MIS Inventory\Inventory Server - Port 5000"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Install Dependencies</strong><br>
+                        <div class="code-block">npm install --production</div>
+                    </li>
+                    <li>
+                        <strong>Configure Environment</strong><br>
+                        Create <code>.env</code> file with production settings
+                    </li>
+                    <li>
+                        <strong>Start Application</strong><br>
+                        <div class="code-block">npm start</div>
+                        Or use the Windows batch files:
+                        <div class="code-block">start-windows-direct.bat</div>
+                    </li>
+                    <li>
+                        <strong>Configure Windows Service (Optional)</strong><br>
+                        For production, set up as a Windows Service using tools like <code>node-windows</code>
+                    </li>
+                </ol>
+
+                <h3>Docker Deployment (Alternative)</h3>
+                <div class="code-block">
+# Dockerfile example
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+                </div>
+            </div>
+
+            <!-- Section 3: System Configuration -->
+            <div id="configuration" class="section">
+                <h2>3. ⚙️ System Configuration</h2>
+
+                <h3>Initial System Setup</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access Admin Panel</strong><br>
+                        Navigate to <strong>Administration → System Setup</strong>
+                    </li>
+                    <li>
+                        <strong>General Settings</strong><br>
+                        Configure:
+                        <ul>
+                            <li>Site name and URL</li>
+                            <li>Default language and timezone</li>
+                            <li>Public registration settings</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Company Information</strong><br>
+                        Set up:
+                        <ul>
+                            <li>Organization name and address</li>
+                            <li>Contact information</li>
+                            <li>Company logo URL</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Email Configuration</strong><br>
+                        Configure SMTP settings for notifications:
+                        <div class="code-block">
+SMTP Server: smtp.gmail.com
+Port: 587
+Security: TLS
+Username: your-email@domain.com
+Password: your-app-password
+                        </div>
+                    </li>
+                </ol>
+
+                <h3>Security Configuration</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔐 Password Policy</h4>
+                        <ul>
+                            <li>Minimum length: 8 characters</li>
+                            <li>Require complexity (uppercase, lowercase, numbers, special chars)</li>
+                            <li>Password history prevention</li>
+                            <li>Regular password expiration</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛡️ Session Security</h4>
+                        <ul>
+                            <li>Session timeout: 120 minutes default</li>
+                            <li>Maximum login attempts: 5</li>
+                            <li>Account lockout duration: configurable</li>
+                            <li>Secure session storage</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Asset Management Configuration</h3>
+                <ul>
+                    <li><strong>Asset Tag Prefix:</strong> Set default prefix (e.g., "SRPH")</li>
+                    <li><strong>Auto-increment:</strong> Enable automatic asset tag generation</li>
+                    <li><strong>Checkout/Checkin:</strong> Enable asset assignment workflows</li>
+                    <li><strong>Warranties:</strong> Enable warranty tracking</li>
+                    <li><strong>Depreciation:</strong> Enable asset depreciation calculations</li>
+                </ul>
+
+                <h3>Notification Settings</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Notification Type</th>
+                                <th>Description</th>
+                                <th>Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Asset Checkout</td>
+                                <td>Notify when assets are checked out</td>
+                                <td>Enabled</td>
+                            </tr>
+                            <tr>
+                                <td>Asset Checkin</td>
+                                <td>Notify when assets are returned</td>
+                                <td>Enabled</td>
+                            </tr>
+                            <tr>
+                                <td>Warranty Expiration</td>
+                                <td>Alert before warranties expire</td>
+                                <td>30 days before</td>
+                            </tr>
+                            <tr>
+                                <td>License Expiration</td>
+                                <td>Alert before licenses expire</td>
+                                <td>30 days before</td>
+                            </tr>
+                            <tr>
+                                <td>System Maintenance</td>
+                                <td>Notify about system maintenance</td>
+                                <td>Enabled</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 4: User Management -->
+            <div id="user-management" class="section">
+                <h2>4. 👥 User Management</h2>
+
+                <h3>User Roles & Permissions</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔵 Administrator</h4>
+                        <ul>
+                            <li>Full system access</li>
+                            <li>User management</li>
+                            <li>System configuration</li>
+                            <li>Database operations</li>
+                            <li>All permissions granted</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🟢 Asset Manager</h4>
+                        <ul>
+                            <li>Asset lifecycle management</li>
+                            <li>Checkout/checkin operations</li>
+                            <li>Inventory management</li>
+                            <li>Component & accessory management</li>
+                            <li>License assignment</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🟡 Department User</h4>
+                        <ul>
+                            <li>View department assets</li>
+                            <li>Request asset assignments</li>
+                            <li>Limited editing capabilities</li>
+                            <li>Department-specific access</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚪ Read-Only User</h4>
+                        <ul>
+                            <li>View-only access</li>
+                            <li>No editing capabilities</li>
+                            <li>Limited to assigned resources</li>
+                            <li>Reporting access</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Creating and Managing Users</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access User Management</strong><br>
+                        Navigate to <strong>Administration → User Management</strong>
+                    </li>
+                    <li>
+                        <strong>Add New User</strong><br>
+                        Click "Add User" and fill in:
+                        <ul>
+                            <li>Username (unique identifier)</li>
+                            <li>First and last name</li>
+                            <li>Email address</li>
+                            <li>Department assignment</li>
+                            <li>Initial password</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Set Role and Permissions</strong><br>
+                        Choose from predefined roles or set custom permissions:
+                        <ul>
+                            <li>Assets: View, Edit, Add permissions</li>
+                            <li>Components: View, Edit, Add permissions</li>
+                            <li>Users: View, Edit, Add permissions</li>
+                            <li>Reports: View, Edit, Add permissions</li>
+                            <li>Admin: View, Edit, Add permissions</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Configure Account Settings</strong><br>
+                        Set:
+                        <ul>
+                            <li>Account activation status</li>
+                            <li>Force password change on first login</li>
+                            <li>Email notification preferences</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Permission System Overview</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>View</th>
+                                <th>Edit</th>
+                                <th>Add</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Assets</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Hardware inventory management</td>
+                            </tr>
+                            <tr>
+                                <td>Components</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Internal hardware parts</td>
+                            </tr>
+                            <tr>
+                                <td>Accessories</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Peripheral devices</td>
+                            </tr>
+                            <tr>
+                                <td>Licenses</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Software license management</td>
+                            </tr>
+                            <tr>
+                                <td>Users</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>User account management</td>
+                            </tr>
+                            <tr>
+                                <td>VM Monitoring</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Virtual machine oversight</td>
+                            </tr>
+                            <tr>
+                                <td>Network Discovery</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Network device scanning</td>
+                            </tr>
+                            <tr>
+                                <td>BitLocker Keys</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>Recovery key management</td>
+                            </tr>
+                            <tr>
+                                <td>Reports</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>System reporting</td>
+                            </tr>
+                            <tr>
+                                <td>Admin</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>System administration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tip-panel">
+                    <strong>💡 Best Practice:</strong> Follow the principle of least privilege. Grant users only the minimum permissions required for their role. Regularly review and audit user permissions.
+                </div>
+            </div>
+
+            <!-- Section 5: System Administration -->
+            <div id="system-admin" class="section">
+                <h2>5. 🔧 System Administration</h2>
+
+                <h3>Database Management</h3>
+                <div class="warning-panel">
+                    <strong>⚠️ Critical Operations:</strong> Database operations can affect system availability. Always perform during maintenance windows and ensure backups are current.
+                </div>
+
+                <h4>Database Operations</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access Database Management</strong><br>
+                        Navigate to <strong>Administration → Database</strong>
+                    </li>
+                    <li>
+                        <strong>View Database Status</strong><br>
+                        Check:
+                        <ul>
+                            <li>Connection status</li>
+                            <li>Database size and table counts</li>
+                            <li>Last backup information</li>
+                            <li>Performance metrics</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Manual Backup Creation</strong><br>
+                        Click "Create Backup" and provide description
+                    </li>
+                    <li>
+                        <strong>Backup Restoration</strong><br>
+                        Upload backup file and confirm restoration
+                    </li>
+                    <li>
+                        <strong>Database Optimization</strong><br>
+                        Run maintenance tasks:
+                        <ul>
+                            <li>Index rebuilding</li>
+                            <li>Statistics updates</li>
+                            <li>Cleanup old logs</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>System Maintenance</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Automatic Tasks</h4>
+                        <ul>
+                            <li>Daily database backups</li>
+                            <li>Weekly system optimization</li>
+                            <li>Log rotation and cleanup</li>
+                            <li>Session cleanup</li>
+                            <li>Cache clearing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Performance Monitoring</h4>
+                        <ul>
+                            <li>Database query performance</li>
+                            <li>Memory usage tracking</li>
+                            <li>CPU utilization</li>
+                            <li>Network bandwidth</li>
+                            <li>Storage capacity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>System Settings Management</h3>
+                <div class="info-panel">
+                    <strong>🎛️ Configuration Access:</strong><br>
+                    System settings are managed through the web interface at <strong>Administration → System Setup</strong>. Changes are stored in the database and applied immediately.
+                </div>
+
+                <h4>Key Configuration Areas</h4>
+                <ul>
+                    <li><strong>General Settings:</strong> Site name, URL, language, timezone</li>
+                    <li><strong>Company Information:</strong> Organization details, logo, contact info</li>
+                    <li><strong>Email Configuration:</strong> SMTP settings for notifications</li>
+                    <li><strong>Asset Settings:</strong> Tag prefixes, workflow configurations</li>
+                    <li><strong>Security Settings:</strong> Password policies, session management</li>
+                    <li><strong>Notification Settings:</strong> Email alerts and timing</li>
+                </ul>
+
+                <h3>Log Management</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Log Type</th>
+                                <th>Location</th>
+                                <th>Retention</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Application Logs</td>
+                                <td>Console/File</td>
+                                <td>30 days</td>
+                                <td>General application activity</td>
+                            </tr>
+                            <tr>
+                                <td>Activity Logs</td>
+                                <td>Database</td>
+                                <td>1 year</td>
+                                <td>User actions and system events</td>
+                            </tr>
+                            <tr>
+                                <td>Error Logs</td>
+                                <td>Console/File</td>
+                                <td>90 days</td>
+                                <td>System errors and exceptions</td>
+                            </tr>
+                            <tr>
+                                <td>Security Logs</td>
+                                <td>Database</td>
+                                <td>1 year</td>
+                                <td>Authentication and permission events</td>
+                            </tr>
+                            <tr>
+                                <td>Backup Logs</td>
+                                <td>File System</td>
+                                <td>6 months</td>
+                                <td>Backup and restore operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 6: Monitoring & Discovery -->
+            <div id="monitoring" class="section">
+                <h2>6. 📡 Monitoring & Discovery Systems</h2>
+
+                <h3>Virtual Machine Monitoring Setup</h3>
+                <div class="info-panel">
+                    <strong>🔗 Zabbix Integration:</strong><br>
+                    SRPH-MIS integrates with Zabbix monitoring system to provide real-time VM performance data and automated alerting.
+                </div>
+
+                <h4>Configuring VM Monitoring</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access VM Monitoring</strong><br>
+                        Navigate to <strong>Monitoring → VM Monitoring</strong>
+                    </li>
+                    <li>
+                        <strong>Configure Zabbix Connection</strong><br>
+                        In the Settings tab, enter:
+                        <div class="code-block">
+Zabbix URL: http://107.105.168.201/zabbix
+API Key: [Generate from Zabbix Administration]
+Sync Interval: 5 minutes
+Alert Thresholds: CPU (80%), Memory (85%), Disk (90%)
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Test Connection</strong><br>
+                        Click "Test Connection" to verify API access
+                    </li>
+                    <li>
+                        <strong>Enable Auto-sync</strong><br>
+                        Turn on automatic synchronization
+                    </li>
+                    <li>
+                        <strong>Configure Alerts</strong><br>
+                        Set up email notifications for critical events
+                    </li>
+                </ol>
+
+                <h3>Network Discovery Configuration</h3>
+                <div class="warning-panel">
+                    <strong>⚠️ Security Note:</strong> Network discovery scans should be performed during maintenance windows. Ensure proper authorization before scanning production networks.
+                </div>
+
+                <h4>Running Network Discovery</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access Network Discovery</strong><br>
+                        Navigate to <strong>Monitoring → Network Discovery</strong>
+                    </li>
+                    <li>
+                        <strong>Configure Scan Parameters</strong><br>
+                        Set up scan with:
+                        <div class="code-block">
+Target Subnets: 192.168.1.0/24 (CIDR format)
+Port Ranges: 22,80,443,3389 (common services)
+DNS Servers: 107.105.134.9, 107.105.134.8
+Timeout: 5 seconds
+Retry Count: 3
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Start Discovery Scan</strong><br>
+                        Click "Start Scan" and monitor progress
+                    </li>
+                    <li>
+                        <strong>Review Results</strong><br>
+                        Examine discovered devices and services
+                    </li>
+                    <li>
+                        <strong>Generate Reports</strong><br>
+                        Export discovery results for documentation
+                    </li>
+                </ol>
+
+                <h3>BitLocker Key Management</h3>
+                <div class="error-panel">
+                    <strong>🔒 Security Critical:</strong> BitLocker recovery keys provide access to encrypted drives. Access is restricted to authorized security personnel only.
+                </div>
+
+                <h4>Key Management Functions</h4>
+                <ul>
+                    <li><strong>Secure Storage:</strong> Centralized storage of recovery keys</li>
+                    <li><strong>Asset Association:</strong> Link keys to specific devices and users</li>
+                    <li><strong>Access Logging:</strong> Complete audit trail of key access</li>
+                    <li><strong>Emergency Access:</strong> Quick key retrieval for urgent situations</li>
+                    <li><strong>Search Capabilities:</strong> Find keys by device identifier</li>
+                </ul>
+
+                <h4>Recovery Process</h4>
+                <ol class="step-list">
+                    <li>Verify user identity and authorization level</li>
+                    <li>Locate device in BitLocker Keys module</li>
+                    <li>Retrieve associated recovery key</li>
+                    <li>Provide key to authorized user</li>
+                    <li>Log key access event for audit trail</li>
+                    <li>Monitor for successful drive recovery</li>
+                </ol>
+            </div>
+
+            <!-- Section 7: Backup & Recovery -->
+            <div id="backup" class="section">
+                <h2>7. 💾 Backup & Recovery</h2>
+
+                <h3>Backup Strategy</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Automated Backups</h4>
+                        <ul>
+                            <li>Daily automatic database backups</li>
+                            <li>Configurable retention period (default: 30 days)</li>
+                            <li>Email notifications for backup status</li>
+                            <li>Automatic integrity verification</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📋 Manual Backups</h4>
+                        <ul>
+                            <li>On-demand backup creation</li>
+                            <li>Custom backup descriptions</li>
+                            <li>Progress monitoring</li>
+                            <li>Download backup files</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Backup Configuration</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong>Access Database Management</strong><br>
+                        Navigate to <strong>Administration → Database</strong>
+                    </li>
+                    <li>
+                        <strong>Configure Automatic Backups</strong><br>
+                        Set up scheduled backups:
+                        <div class="code-block">
+Schedule: Daily at 2:00 AM
+Retention: 30 days
+Notification Email: admin@yourorg.com
+Compression: Enabled
+Verification: Enabled
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Test Backup Process</strong><br>
+                        Create a manual backup to verify configuration
+                    </li>
+                    <li>
+                        <strong>Monitor Backup Status</strong><br>
+                        Review backup logs and notifications
+                    </li>
+                </ol>
+
+                <h3>Recovery Procedures</h3>
+                <div class="warning-panel">
+                    <strong>⚠️ Recovery Warning:</strong> Database restoration will replace all current data. Ensure you have a recent backup before proceeding with any recovery operation.
+                </div>
+
+                <h4>Full System Recovery</h4>
+                <ol class="step-list">
+                    <li>
+                        <strong>Stop Application</strong><br>
+                        Shut down the SRPH-MIS application to prevent data conflicts
+                    </li>
+                    <li>
+                        <strong>Access Recovery Interface</strong><br>
+                        Navigate to <strong>Administration → Database → Recovery</strong>
+                    </li>
+                    <li>
+                        <strong>Select Backup File</strong><br>
+                        Choose from available backups or upload external backup
+                    </li>
+                    <li>
+                        <strong>Verify Backup Integrity</strong><br>
+                        System will verify backup file before restoration
+                    </li>
+                    <li>
+                        <strong>Confirm Restoration</strong><br>
+                        Review restoration details and confirm operation
+                    </li>
+                    <li>
+                        <strong>Monitor Progress</strong><br>
+                        Watch restoration progress and check for errors
+                    </li>
+                    <li>
+                        <strong>Restart Application</strong><br>
+                        Start SRPH-MIS and verify system functionality
+                    </li>
+                    <li>
+                        <strong>Verify Data Integrity</strong><br>
+                        Check critical data and functionality
+                    </li>
+                </ol>
+
+                <h3>Disaster Recovery Planning</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Recovery Time</th>
+                                <th>Data Loss</th>
+                                <th>Procedure</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Application Crash</td>
+                                <td>5 minutes</td>
+                                <td>None</td>
+                                <td>Restart application service</td>
+                            </tr>
+                            <tr>
+                                <td>Database Corruption</td>
+                                <td>30 minutes</td>
+                                <td>Up to 24 hours</td>
+                                <td>Restore from latest backup</td>
+                            </tr>
+                            <tr>
+                                <td>Server Hardware Failure</td>
+                                <td>2-4 hours</td>
+                                <td>Up to 24 hours</td>
+                                <td>Deploy to new server, restore backup</td>
+                            </tr>
+                            <tr>
+                                <td>Complete Site Disaster</td>
+                                <td>4-8 hours</td>
+                                <td>Up to 24 hours</td>
+                                <td>Deploy to alternative site, restore backup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 8: Troubleshooting -->
+            <div id="troubleshooting" class="section">
+                <h2>8. 🔧 Troubleshooting</h2>
+
+                <h3>Common Issues & Solutions</h3>
+
+                <h4>Application Won't Start</h4>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>❌ Port Already in Use</h4>
+                        <p><strong>Symptoms:</strong> Error about port 3000 being busy</p>
+                        <p><strong>Solutions:</strong></p>
+                        <div class="code-block">
+# Find process using port 3000
+netstat -ano | findstr :3000
+
+# Kill the process (Windows)
+taskkill /PID [process_id] /F
+
+# Kill the process (Linux/Mac)
+kill -9 [process_id]
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🗄️ Database Connection Failed</h4>
+                        <p><strong>Symptoms:</strong> Cannot connect to database</p>
+                        <p><strong>Solutions:</strong></p>
+                        <ul>
+                            <li>Check DATABASE_URL in environment</li>
+                            <li>Verify database server is running</li>
+                            <li>Test connection manually</li>
+                            <li>Check firewall settings</li>
+                            <li>Verify credentials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Performance Issues</h4>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🐌 Slow Page Loading</h4>
+                        <p><strong>Causes & Solutions:</strong></p>
+                        <ul>
+                            <li><strong>Large datasets:</strong> Implement pagination</li>
+                            <li><strong>Database queries:</strong> Optimize with indexes</li>
+                            <li><strong>Network latency:</strong> Check connection speed</li>
+                            <li><strong>Server resources:</strong> Monitor CPU/Memory</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💾 High Memory Usage</h4>
+                        <p><strong>Solutions:</strong></p>
+                        <ul>
+                            <li>Restart application service</li>
+                            <li>Clear application cache</li>
+                            <li>Check for memory leaks</li>
+                            <li>Optimize database queries</li>
+                            <li>Increase server resources</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Error Code Reference</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Error Code</th>
+                                <th>Description</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>AUTH_001</code></td>
+                                <td>Invalid credentials</td>
+                                <td>Reset password or check account status</td>
+                            </tr>
+                            <tr>
+                                <td><code>AUTH_002</code></td>
+                                <td>Account locked</td>
+                                <td>Unlock account in user management</td>
+                            </tr>
+                            <tr>
+                                <td><code>DB_001</code></td>
+                                <td>Database connection failed</td>
+                                <td>Check database server and connection string</td>
+                            </tr>
+                            <tr>
+                                <td><code>DB_002</code></td>
+                                <td>Query timeout</td>
+                                <td>Optimize query or increase timeout</td>
+                            </tr>
+                            <tr>
+                                <td><code>PERM_001</code></td>
+                                <td>Insufficient permissions</td>
+                                <td>Grant appropriate permissions to user</td>
+                            </tr>
+                            <tr>
+                                <td><code>SYS_001</code></td>
+                                <td>Configuration error</td>
+                                <td>Review system configuration settings</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Log Analysis</h3>
+                <div class="info-panel">
+                    <strong>📊 Log Locations:</strong><br>
+                    • Application logs: Browser console and server console<br>
+                    • Activity logs: Administration → Activities<br>
+                    • Error logs: Check browser developer tools<br>
+                    • System logs: Server console output
+                </div>
+
+                <h4>Common Log Patterns</h4>
+                <div class="code-block">
+# Successful login
+[INFO] User 'admin' logged in successfully
+
+# Permission denied
+[WARN] User 'user1' denied access to assets.add
+
+# Database error
+[ERROR] Database connection failed: timeout
+
+# Backup completed
+[INFO] Database backup completed: backup-2025-01-15.sql
+                </div>
+
+                <h3>Getting Support</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📞 Internal Support</h4>
+                        <ul>
+                            <li>Check system logs and error messages</li>
+                            <li>Review user manual and documentation</li>
+                            <li>Contact your system administrator</li>
+                            <li>Submit ticket through internal help desk</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛠️ Technical Support</h4>
+                        <ul>
+                            <li>Gather system information and logs</li>
+                            <li>Document error reproduction steps</li>
+                            <li>Check for known issues and updates</li>
+                            <li>Contact development team if needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Maintenance Schedule</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Frequency</th>
+                                <th>Duration</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Database Backup</td>
+                                <td>Daily (2:00 AM)</td>
+                                <td>5-15 minutes</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>System Updates</td>
+                                <td>Monthly</td>
+                                <td>30-60 minutes</td>
+                                <td>System downtime</td>
+                            </tr>
+                            <tr>
+                                <td>Database Optimization</td>
+                                <td>Weekly (Sunday 3:00 AM)</td>
+                                <td>15-30 minutes</td>
+                                <td>Reduced performance</td>
+                            </tr>
+                            <tr>
+                                <td>Log Cleanup</td>
+                                <td>Daily (1:00 AM)</td>
+                                <td>2-5 minutes</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Security Patches</td>
+                                <td>As needed</td>
+                                <td>15-45 minutes</td>
+                                <td>System downtime</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>📚 Additional Resources</h3>
+            <p>
+                <a href="/user-manual" class="button">User Manual</a>
+                <a href="/help" class="button secondary">Help Center</a>
+                <a href="/report-issue" class="button secondary">Report Issue</a>
+            </p>
+            <p style="margin-top: 20px; color: #6b778c;">
+                SRPH-MIS Administrator Guide • Version 2.0 • Updated January 2025<br>
+                For technical support, contact your system administrator
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+[2025-10-05T06:27:00.716Z] To: system | Subject: Manual IAM expiration check triggered by admin | Status: [SUCCESS]
+[2025-10-05T06:27:00.787Z] To: system | Subject: Manual IAM expiration check - No expired accounts found | Status: [SUCCESS]
+[2025-10-05T06:27:02.063Z] To: system | Subject: Manual IAM expiration check triggered by admin | Status: [SUCCESS]
+[2025-10-05T06:27:02.134Z] To: system | Subject: Manual IAM expiration check - No expired accounts found | Status: [SUCCESS]
+[2025-10-05T06:27:13.564Z] To: system | Subject: Manual IAM expiration check triggered by admin | Status: [SUCCESS]
+[2025-10-05T06:27:13.636Z] To: system | Subject: Attempting to send notifications for 1 expired IAM account(s) | Status: [SUCCESS]
+[2025-10-05T06:27:13.705Z] To: system | Subject: Failed to send notifications for 1 expired IAM account(s) | Status: [FAILED] | Error: Email service returned false
+[2026-01-07T07:33:17.132Z] To: N/A | Subject: [SRPH-MIS] CREATE - Asset: dasda (adas) | Status: [FAILED] | Error: No admin email configured
+[2026-01-09T10:48:43.212Z] To: N/A | Subject: [SRPH-MIS] CREATED - GCP Resource: test | Status: [FAILED] | Error: No admin email configured
+[2026-01-09T10:49:50.091Z] To: N/A | Subject: [SRPH-MIS] CREATE - Asset: test (test) | Status: [FAILED] | Error: No admin email configured
+[2026-01-09T10:50:17.977Z] To: N/A | Subject: [SRPH-MIS] CREATE - Asset: teste (teste) | Status: [FAILED] | Error: No admin email configured
+[2026-01-09T10:50:35.603Z] To: N/A | Subject: [SRPH-MIS] CREATE - Asset: dad (dasd) | Status: [FAILED] | Error: No admin email configured
+[2026-01-09T10:50:59.563Z] To: N/A | Subject: [SRPH-MIS] UPDATE - Asset: test (dasda) | Status: [FAILED] | Error: No admin email configured

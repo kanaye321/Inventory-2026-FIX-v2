@@ -1,0 +1,5705 @@
+================================================================================
+                    SRPH-MIS SYSTEM FEATURES DOCUMENTATION
+                Complete Feature List - Basic to Advanced Guide
+================================================================================
+
+VERSION: 4.0
+LAST UPDATED: January 2025
+SYSTEM: SRPH-MIS Inventory Management System
+
+================================================================================
+                              TABLE OF CONTENTS
+================================================================================
+
+PART I: FOUNDATION & CORE FEATURES
+1. System Overview & Architecture
+2. Authentication & Security
+3. User Interface & Navigation
+4. Dashboard & Analytics
+
+PART II: INVENTORY MANAGEMENT
+5. Asset Management
+6. Component & Accessory Management
+7. License & Software Management
+8. IT Equipment & Monitor Inventory
+
+PART III: CLOUD & INFRASTRUCTURE
+9. Azure Cloud Management
+10. Google Cloud Platform (GCP) Management
+11. Amazon Web Services (AWS) Management
+12. Virtual Machine Management
+13. Approval & Compliance Monitoring
+
+PART IV: MONITORING & DISCOVERY
+14. VM Performance Monitoring (Zabbix)
+15. Network Discovery & Scanning
+16. IAM Account Management
+17. BitLocker Key Management
+
+PART V: ADVANCED ADMINISTRATION
+18. User Management & Permissions
+19. Data Security & Encryption
+20. System Configuration
+21. Email & Notifications
+22. Database Management
+23. Page Builder (Custom Modules)
+
+PART VI: REPORTING & OPERATIONS
+24. Reporting & Analytics
+25. Import/Export Operations
+26. Activity Tracking & Audit Logs
+27. System Maintenance & Optimization
+
+PART VII: SUPPORT & RESOURCES
+28. Help & Documentation
+29. Troubleshooting Guide
+30. API & Integration Capabilities
+
+================================================================================
+                    PART I: FOUNDATION & CORE FEATURES
+================================================================================
+
+--------------------------------------------------------------------------------
+1. SYSTEM OVERVIEW & ARCHITECTURE
+--------------------------------------------------------------------------------
+
+WHAT IS SRPH-MIS?
+SRPH-MIS (San Roque Philippine Hospital - Management Information System) is an
+enterprise-grade inventory and asset management platform designed for healthcare
+and educational institutions.
+
+CORE CAPABILITIES:
+✓ Complete IT asset lifecycle management
+✓ Multi-cloud infrastructure tracking (Azure, AWS, GCP)
+✓ Real-time virtual machine monitoring
+✓ Network device discovery and management
+✓ Software license compliance
+✓ Security and encryption features
+✓ Comprehensive audit trails
+✓ Role-based access control
+
+TECHNOLOGY STACK:
+- Frontend: React 18+ with TypeScript
+- UI Framework: Tailwind CSS + shadcn/ui components
+- Backend: Node.js with Express.js
+- Database: PostgreSQL (production) / In-memory (development)
+- Authentication: Session-based with MFA support
+- Monitoring: Zabbix integration
+- Encryption: AES-256-GCM
+
+DEPLOYMENT OPTIONS:
+- Replit Cloud Deployment (Recommended)
+- Local Windows/Linux Server
+- Port Configuration: 5000 (default, production-ready)
+
+SYSTEM REQUIREMENTS:
+Minimum:
+- Node.js 18+ or 20+
+- 2GB RAM
+- 10GB disk space
+- Modern web browser (Chrome, Firefox, Edge)
+
+Recommended:
+- Node.js 20 LTS
+- 4GB+ RAM
+- 20GB+ disk space
+- PostgreSQL 12+
+
+--------------------------------------------------------------------------------
+2. AUTHENTICATION & SECURITY
+--------------------------------------------------------------------------------
+
+LOGIN & ACCESS CONTROL:
+- Username/password authentication
+- Session management with configurable timeout (default: 120 minutes)
+- Account lockout protection (default: 5 failed attempts)
+- Remember me functionality
+- Password reset via email
+- Secure session storage
+
+TWO-FACTOR AUTHENTICATION (MFA):
+✓ Mandatory MFA for all users
+✓ Microsoft Authenticator integration
+✓ QR code setup process
+✓ Time-based one-time passwords (TOTP)
+✓ Emergency MFA disable (admin only)
+✓ MFA status dashboard
+✓ Backup codes for recovery
+
+PASSWORD SECURITY:
+- Minimum length: 8 characters (configurable)
+- Complexity requirements:
+  * Uppercase letters
+  * Lowercase letters
+  * Numbers
+  * Special characters
+- Password history prevention
+- Regular password expiration (90 days default)
+- Force password change on first login
+
+SESSION SECURITY:
+- Secure session cookies
+- HTTPS enforcement (production)
+- Session timeout protection
+- Concurrent session control
+- Activity-based session extension
+- Automatic logout on inactivity
+
+SECURITY AUDIT FEATURES:
+- Failed login attempt tracking
+- Account lockout monitoring
+- MFA compliance reporting
+- Session activity logs
+- IP address tracking
+- Suspicious activity alerts
+
+--------------------------------------------------------------------------------
+3. USER INTERFACE & NAVIGATION
+--------------------------------------------------------------------------------
+
+RESPONSIVE DESIGN:
+✓ Desktop-optimized layouts (1920x1080+)
+✓ Tablet support (768px - 1024px)
+✓ Mobile-friendly interface (320px+)
+✓ Touch-optimized controls
+✓ Adaptive navigation menus
+
+THEME CUSTOMIZATION:
+Light/Dark Mode:
+- System preference detection
+- Manual toggle control
+- Persistent theme selection
+
+Color Themes (12 options):
+- Default (Blue-Gray)
+- Blue, Green, Purple, Red
+- Orange, Yellow, Pink, Teal
+- Indigo, Cyan, Amber
+- Custom theme support
+
+NAVIGATION STRUCTURE:
+Main Sidebar Menu:
+📊 Dashboard - System overview and metrics
+📦 Inventory Management
+  - Assets
+  - Components
+  - Accessories
+  - Licenses
+  - Consumables
+  - IT Equipment
+  - Monitor Inventory
+☁️ Cloud Infrastructure
+  - Azure Inventory
+  - GCP Inventory
+  - AWS Inventory
+  - Approval Monitoring
+🖥️ Monitoring & Discovery
+  - VM Inventory
+  - VM Monitoring (Zabbix)
+  - Network Discovery
+  - IAM Accounts
+  - BitLocker Keys
+👥 User Management
+  - Users
+  - Activities
+  - Permissions
+⚙️ Administration
+  - System Setup
+  - Database Management
+  - Data Encryption
+  - MFA Management
+  - Password Management
+  - Email Notifications
+  - Page Builder
+  - System Logs
+📈 Reports & Analytics
+
+Quick Access Features:
+- Global search bar (Ctrl/Cmd + K)
+- Recent activities feed
+- Quick action buttons
+- Breadcrumb navigation
+- Contextual help tooltips
+
+--------------------------------------------------------------------------------
+4. DASHBOARD & ANALYTICS
+--------------------------------------------------------------------------------
+
+REAL-TIME METRICS DASHBOARD:
+Status Cards:
+1. Total Assets
+   - Count of all IT assets
+   - Category breakdown
+   - Status distribution
+
+2. Asset Utilization
+   - Deployment percentage
+   - Available assets count
+   - Maintenance status
+
+3. License Management
+   - Active licenses
+   - Expiring soon (30 days)
+   - Compliance status
+
+4. Virtual Machines
+   - Total VM count
+   - Active VMs
+   - Resource utilization
+
+5. Cloud Resources
+   - Azure resource count
+   - GCP resource count
+   - AWS resource count
+   - Multi-cloud summary
+
+6. Network Devices
+   - Discovered devices
+   - Active endpoints
+   - Service status
+
+VISUAL ANALYTICS:
+Charts & Graphs:
+- Asset status pie chart
+- Monthly trend lines
+- Category distribution
+- Department allocation
+- Cloud resource distribution
+- VM performance metrics
+- License expiration timeline
+
+Activity Timeline:
+- Real-time activity feed
+- User action tracking
+- System event notifications
+- Filter by date/user/type
+- Export activity reports
+
+Quick Actions Panel:
+- Add New Asset
+- Checkout Asset
+- Run Network Scan
+- Create Report
+- Import CSV Data
+- View System Logs
+
+Customization Options:
+- Page size: 10, 25, 50, 100 items
+- Auto-refresh intervals
+- Widget arrangement (drag & drop)
+- Custom date ranges
+- Filter presets
+
+PERFORMANCE INDICATORS:
+Key Metrics:
+- System uptime
+- Database performance
+- Active user sessions
+- API response times
+- Storage utilization
+- Backup status
+
+Health Monitoring:
+- System alerts
+- Warning notifications
+- Critical issues
+- Maintenance reminders
+
+================================================================================
+                    PART II: INVENTORY MANAGEMENT
+================================================================================
+
+--------------------------------------------------------------------------------
+5. ASSET MANAGEMENT
+--------------------------------------------------------------------------------
+
+COMPREHENSIVE ASSET TRACKING:
+
+Asset Information Fields:
+IDENTIFICATION:
+- Asset Tag (auto-generated or manual)
+- Serial Number (encrypted)
+- Model Name/Number
+- Manufacturer
+- Category (predefined or custom)
+
+ASSIGNMENT:
+- Knox ID (user assignment)
+- Department
+- Location/Building
+- Responsible Person
+
+NETWORK DETAILS:
+- IP Address (encrypted)
+- MAC Address (encrypted)
+- Hostname
+- Network Segment
+
+TECHNICAL SPECS:
+- OS Type (Windows, Linux, macOS, Other)
+- OS Version
+- Processor/CPU
+- RAM/Memory
+- Storage Capacity
+- Graphics Card
+
+FINANCIAL:
+- Purchase Date
+- Purchase Cost
+- Vendor/Supplier
+- Purchase Order Number
+- Warranty Start/End Dates
+- Depreciation Schedule
+
+STATUS TRACKING:
+- Available
+- Deployed
+- Pending
+- Maintenance
+- Retired
+- Lost/Stolen
+
+CONDITION:
+- Good
+- Fair
+- Bad
+- Needs Repair
+
+ASSET OPERATIONS:
+
+1. ADD NEW ASSET:
+   Navigation: Assets → Add Asset
+   Required Fields:
+   - Name/Model
+   - Category
+   - Serial Number
+   Optional Fields:
+   - All other specifications
+   Auto-Generation:
+   - Asset tag with prefix
+   - Creation timestamp
+   - Initial status
+
+2. EDIT ASSET:
+   - Update any field
+   - Track modification history
+   - Audit trail logging
+   - Validation checks
+
+3. DELETE ASSET:
+   - Confirmation dialog
+   - Admin permission required
+   - Permanent deletion
+   - Audit log entry
+
+4. VIEW ASSET DETAILS:
+   - Complete information display
+   - Related components
+   - Checkout history
+   - Maintenance records
+   - Associated documents
+
+ASSET WORKFLOWS:
+
+CHECKOUT PROCESS:
+1. Select available asset
+2. Choose user/department
+3. Set expected return date
+4. Add notes/conditions
+5. Generate checkout report
+6. Send email notification
+7. Update asset status to "Deployed"
+
+CHECKIN PROCESS:
+1. Locate checked-out asset
+2. Verify physical condition
+3. Update condition status
+4. Return to location
+5. Add checkin notes
+6. Complete checkin
+7. Send confirmation email
+8. Update status to "Available"
+
+MAINTENANCE WORKFLOW:
+1. Schedule maintenance
+2. Update status to "Maintenance"
+3. Record maintenance actions
+4. Track costs and parts
+5. Complete maintenance
+6. Return to service
+7. Update status
+
+ADVANCED ASSET FEATURES:
+
+SEARCH & FILTERING:
+Multi-field Search:
+- Asset tag
+- Serial number
+- Model name
+- Knox ID
+- IP/MAC addresses
+- Department
+- Location
+- Category
+
+Advanced Filters:
+- Status (multi-select)
+- Category (multi-select)
+- Department
+- Condition
+- Date ranges
+- Price ranges
+- Warranty status
+- Combination filters
+
+BULK OPERATIONS:
+CSV Import:
+- Template download
+- Field mapping
+- Data validation
+- Error reporting
+- Duplicate detection
+- Batch processing
+- Import confirmation
+
+CSV Export:
+- Filtered data export
+- Custom field selection
+- Automatic filename generation
+- Include filter information
+- Date-stamped files
+
+ASSET LIFECYCLE:
+- Acquisition tracking
+- Deployment history
+- Maintenance logs
+- Transfer records
+- Decommissioning workflow
+- Disposal documentation
+
+AUTOMATED FEATURES:
+- Warranty expiration alerts (30 days before)
+- Maintenance reminders
+- Asset tag generation
+- Status updates
+- Email notifications
+- Report generation
+
+KNOX ID MANAGEMENT:
+- Knox ID cleanup utility
+- Format validation
+- Duplicate prevention
+- User association
+- Department linking
+
+--------------------------------------------------------------------------------
+6. COMPONENT & ACCESSORY MANAGEMENT
+--------------------------------------------------------------------------------
+
+COMPONENT TRACKING:
+
+Component Types:
+- RAM Modules
+  * Capacity (GB)
+  * Type (DDR3, DDR4, DDR5)
+  * Speed (MHz)
+  * Form factor
+
+- Processors/CPUs
+  * Manufacturer
+  * Model
+  * Cores/Threads
+  * Clock speed
+
+- Storage Devices
+  * Type (HDD, SSD, NVMe)
+  * Capacity
+  * Interface
+  * Form factor
+
+- Graphics Cards
+  * Manufacturer
+  * Model
+  * Memory
+  * Interface
+
+- Motherboards
+  * Manufacturer
+  * Model
+  * Chipset
+  * Form factor
+
+- Power Supplies
+  * Wattage
+  * Efficiency rating
+  * Modular/Non-modular
+
+Component Features:
+- Serial number tracking
+- Warranty information
+- Purchase details
+- Compatibility notes
+- Installation date
+- Parent asset linking
+- Quantity management
+- Reorder levels
+
+ACCESSORY MANAGEMENT:
+
+Accessory Categories:
+- Input Devices
+  * Keyboards (wired/wireless)
+  * Mice (wired/wireless)
+  * Graphics tablets
+
+- Display Accessories
+  * Monitor stands
+  * Screen protectors
+  * Cables (HDMI, DisplayPort, VGA)
+
+- Audio Equipment
+  * Headsets
+  * Speakers
+  * Microphones
+
+- Connectivity
+  * USB hubs
+  * Docking stations
+  * Network adapters
+  * Bluetooth adapters
+
+- Storage Accessories
+  * External drives
+  * USB flash drives
+  * Card readers
+
+- Other Peripherals
+  * Webcams
+  * Scanners
+  * Printers
+
+Accessory Features:
+- Condition tracking
+- User assignment
+- Availability status
+- Compatibility information
+- Checkout/checkin capability
+- Warranty tracking
+- Location management
+
+--------------------------------------------------------------------------------
+7. LICENSE & SOFTWARE MANAGEMENT
+--------------------------------------------------------------------------------
+
+SOFTWARE LICENSE TRACKING:
+
+License Information:
+BASIC INFO:
+- Software name
+- Version
+- Publisher/Vendor
+- License type (per-seat, concurrent, enterprise)
+
+LICENSE DETAILS:
+- License key (encrypted storage)
+- Purchase date
+- Expiration date
+- Maintenance period
+- Support end date
+
+ALLOCATION:
+- Total seats/licenses
+- Allocated seats
+- Available seats
+- User assignments
+- Department distribution
+
+FINANCIAL:
+- Purchase cost
+- Annual maintenance
+- Renewal cost
+- Cost per seat
+- Total cost of ownership
+
+LICENSE OPERATIONS:
+
+1. Add License:
+   - Software details
+   - License key entry
+   - Seat allocation
+   - Expiration date
+   - Cost information
+
+2. Assign License:
+   - Select user
+   - Allocate seat
+   - Track assignment date
+   - Send notification
+
+3. Reclaim License:
+   - Deallocate from user
+   - Return to pool
+   - Update availability
+   - Audit trail
+
+4. Renew License:
+   - Update expiration
+   - Record renewal cost
+   - Maintain history
+   - Alert notifications
+
+COMPLIANCE FEATURES:
+- Seat usage monitoring
+- Over-allocation alerts
+- Expiration tracking (30-day alerts)
+- Automated email notifications
+- Compliance reports
+- Audit trail
+- License utilization metrics
+
+ADVANCED LICENSE FEATURES:
+- Bulk import/export
+- License templates
+- Auto-renewal reminders
+- Cost analysis reports
+- Vendor management
+- Contract tracking
+
+--------------------------------------------------------------------------------
+8. IT EQUIPMENT & MONITOR INVENTORY
+--------------------------------------------------------------------------------
+
+IT EQUIPMENT MANAGEMENT:
+
+Equipment Categories:
+- Servers
+- Networking equipment
+- Telecommunications
+- Audio/Visual equipment
+- Security systems
+- Specialized IT hardware
+
+Tracking Features:
+- Serial number (encrypted)
+- Model information
+- Department assignment
+- Location tracking
+- Status monitoring
+- Warranty details
+- Purchase information
+
+Operations:
+- Add/Edit/Delete equipment
+- CSV import with template
+- CSV export functionality
+- Search and filter
+- Status updates
+- Assignment tracking
+
+MONITOR INVENTORY:
+
+Monitor-Specific Fields:
+IDENTIFICATION:
+- Asset number
+- Serial number (encrypted)
+- Model name
+- Manufacturer
+
+SPECIFICATIONS:
+- Screen size
+- Resolution
+- Panel type (IPS, TN, VA)
+- Refresh rate
+- Response time
+- Connectivity (HDMI, DP, VGA, USB-C)
+
+ASSIGNMENT:
+- User assignment
+- Department
+- Location
+- Status
+
+Monitor Features:
+- Dedicated monitor module
+- CSV bulk operations
+- Template download
+- Location management
+- User tracking
+- Warranty monitoring
+- Status updates
+
+================================================================================
+                    PART III: CLOUD & INFRASTRUCTURE
+================================================================================
+
+--------------------------------------------------------------------------------
+9. AZURE CLOUD MANAGEMENT
+--------------------------------------------------------------------------------
+
+AZURE RESOURCE TRACKING:
+
+Resource Types Supported:
+- Virtual Machines (VMs)
+- Storage Accounts
+- App Services
+- Databases:
+  * Azure SQL Database
+  * CosmosDB
+  * MySQL/PostgreSQL
+- Network Resources:
+  * Virtual Networks
+  * Load Balancers
+  * Application Gateways
+- Container Services:
+  * Container Instances
+  * Kubernetes Service (AKS)
+- Other Services:
+  * Functions
+  * Logic Apps
+  * Service Bus
+
+Resource Information Fields:
+- Resource Name
+- Resource Type
+- Resource Group
+- Location/Region
+- Subscription ID
+- Status (Active, Stopped, Deallocated, Deleted)
+- Tags/Labels
+- Remarks/Notes
+
+AZURE OPERATIONS:
+
+1. Add Azure Resource:
+   - Resource identification
+   - Type selection
+   - Resource group
+   - Location/region
+   - Subscription
+   - Status
+   - Notes
+
+2. Update Resource:
+   - Modify any field
+   - Status changes
+   - Update remarks
+   - Track changes
+
+3. Bulk Import (CSV):
+   - Template download
+   - Robust CSV parsing
+   - Field validation
+   - Error handling
+   - Import confirmation
+
+4. Export Data:
+   - CSV export
+   - Filtered export
+   - Historical data export
+   - Custom date ranges
+
+HISTORICAL TRACKING:
+
+Change History Features:
+- Monthly change tracking
+- Change types:
+  * Imported (new resource)
+  * Updated (modified)
+  * Deleted (removed)
+- Month/Year filtering
+- Historical data preservation
+- Change type analysis
+- Trend visualization
+
+Historical Operations:
+- View all changes
+- Filter by month/year
+- Filter by change type
+- Export historical data
+- Compare time periods
+- Generate trend reports
+
+ANALYTICS & REPORTING:
+
+Visual Analytics:
+1. Monthly Changes Chart:
+   - Bar graph visualization
+   - Import/Update/Delete breakdown
+   - Month-over-month comparison
+   - Trend analysis
+
+2. Resource Type Distribution:
+   - Pie chart display
+   - Percentage breakdown
+   - Resource count per type
+   - Category analysis
+
+3. Status Breakdown:
+   - Active resources
+   - Stopped resources
+   - Deallocated resources
+   - Deleted resources
+
+4. Location Analysis:
+   - Regional distribution
+   - Geography-based charts
+   - Multi-region tracking
+
+ADVANCED FEATURES:
+
+Filtering & Search:
+- Name search (partial match)
+- Resource type filter
+- Resource group filter
+- Location/region filter
+- Subscription filter
+- Status filter
+- Multi-filter combination
+- Clear all filters option
+
+Sorting Capabilities:
+- Sort by any column
+- Ascending/descending order
+- Multi-column sort
+- Persistent sort preferences
+
+Pagination:
+- Records per page: 10, 25, 50, 100
+- Page navigation
+- Total record count
+- Jump to page
+
+--------------------------------------------------------------------------------
+10. GOOGLE CLOUD PLATFORM (GCP) MANAGEMENT
+--------------------------------------------------------------------------------
+
+GCP RESOURCE TRACKING:
+
+Supported GCP Resources:
+- Compute Engine Instances
+- Cloud Storage Buckets
+- Cloud SQL Databases
+- Kubernetes Engine (GKE) Clusters
+- Cloud Functions
+- App Engine Services
+- Cloud Run Services
+- BigQuery Datasets
+- Pub/Sub Topics
+- Cloud Spanner
+
+Resource Information:
+- Resource Name
+- Resource Type
+- Project ID
+- Display Name
+- Location/Zone
+- Status (Active, Stopped, Suspended, Deleted)
+- Creation Date
+- Remarks/Documentation
+
+GCP OPERATIONS:
+
+1. Add GCP Resource:
+   - Resource identification
+   - Type classification
+   - Project assignment
+   - Location/zone
+   - Status
+   - Display name
+   - Documentation
+
+2. Update Resource:
+   - Field modifications
+   - Status updates
+   - Project changes
+   - Note updates
+   - Change tracking
+
+3. CSV Import:
+   - Template with examples
+   - Header format support
+   - Field mapping
+   - Validation rules
+   - Error reporting
+   - Success confirmation
+
+4. Data Export:
+   - Filtered CSV export
+   - Complete data export
+   - Historical exports
+   - Custom field selection
+
+HISTORICAL TRACKING:
+
+Change Management:
+- Import tracking
+- Update history
+- Deletion records
+- Monthly aggregation
+- Year-based filtering
+- Change type categorization
+
+Historical Analysis:
+- View change history
+- Filter by time period
+- Filter by change type
+- Export historical data
+- Trend visualization
+- Comparative analysis
+
+ANALYTICS DASHBOARD:
+
+Visual Reports:
+1. Monthly Change Graph:
+   - Line/bar chart
+   - Import/Update/Delete trends
+   - Month-over-month growth
+   - Seasonal patterns
+
+2. Resource Distribution:
+   - Pie chart by type
+   - Project-based breakdown
+   - Location distribution
+   - Status analysis
+
+3. Project Analytics:
+   - Resources per project
+   - Project growth trends
+   - Resource utilization
+
+4. Location Insights:
+   - Zone distribution
+   - Regional analysis
+   - Multi-region tracking
+
+ADVANCED CAPABILITIES:
+
+Search & Filter:
+- Resource identifier search
+- Resource type filtering
+- Project ID filtering
+- Display name search
+- Location/zone filtering
+- Status filtering
+- Combined filters
+- Filter persistence
+
+Column Management:
+- Sortable columns
+- Custom column order
+- Show/hide columns
+- Column width adjustment
+
+Data Management:
+- Pagination (10-100 records)
+- Bulk operations
+- Batch updates
+- Mass deletion (filtered)
+- Data validation
+
+--------------------------------------------------------------------------------
+11. AMAZON WEB SERVICES (AWS) MANAGEMENT
+--------------------------------------------------------------------------------
+
+AWS RESOURCE TRACKING:
+
+AWS Services Supported:
+- EC2 Instances
+- S3 Buckets
+- RDS Databases
+- Lambda Functions
+- ECS/EKS Containers
+- Elastic Beanstalk
+- CloudFront Distributions
+- Route 53 Domains
+- DynamoDB Tables
+- Redshift Clusters
+- ElastiCache
+- SNS/SQS Services
+
+Resource Information:
+- Resource Identifier (ARN or ID)
+- Service Type
+- Resource Type/Instance Type
+- Region
+- Account Name
+- Account ID
+- Status (Active, Stopped, Terminated, Deleted)
+- Tags
+- Remarks/Notes
+
+AWS OPERATIONS:
+
+1. Add AWS Resource:
+   - Identifier entry
+   - Service classification
+   - Resource type
+   - Region selection
+   - Account assignment
+   - Status
+   - Tag management
+   - Documentation
+
+2. Update Resource:
+   - Modify fields
+   - Status changes
+   - Account updates
+   - Tag updates
+   - Note additions
+
+3. CSV Import:
+   - Template download
+   - Sample data included
+   - Header validation
+   - Field normalization
+   - Error handling
+   - Import verification
+
+4. Data Export:
+   - CSV export
+   - Filter-based export
+   - Historical data
+   - Custom formatting
+
+HISTORICAL TRACKING:
+
+Change History:
+- Import records
+- Update tracking
+- Deletion history
+- Monthly grouping
+- Change type classification
+- Historical preservation
+
+Historical Features:
+- View all changes
+- Time-based filtering
+- Change type filtering
+- Export capabilities
+- Trend analysis
+- Month/year selection
+
+ANALYTICS & VISUALIZATION:
+
+Reports & Charts:
+1. Monthly Change Analysis:
+   - Bar chart visualization
+   - Import/Update/Delete metrics
+   - Growth trends
+   - Change velocity
+
+2. Service Distribution:
+   - Pie chart by service
+   - Resource type breakdown
+   - Percentage analysis
+   - Service popularity
+
+3. Regional Distribution:
+   - Geographic breakdown
+   - Multi-region view
+   - Regional utilization
+   - Cross-region analysis
+
+4. Account Analysis:
+   - Resources per account
+   - Account utilization
+   - Cost allocation
+   - Multi-account view
+
+5. Status Breakdown:
+   - Active resources
+   - Stopped instances
+   - Terminated resources
+   - Resource lifecycle
+
+ADVANCED FEATURES:
+
+Filtering System:
+- Identifier search
+- Service type filter
+- Resource type filter
+- Region filter
+- Account name filter
+- Account ID filter
+- Status filter
+- Multi-criteria filtering
+- Clear filters option
+
+Sorting & Pagination:
+- Multi-column sorting
+- Sort direction toggle
+- Records per page: 10-100
+- Page navigation
+- Total count display
+- Jump to page
+
+Data Operations:
+- Bulk import
+- Batch updates
+- Filtered exports
+- Mass operations
+- Validation checks
+
+--------------------------------------------------------------------------------
+12. VIRTUAL MACHINE MANAGEMENT
+--------------------------------------------------------------------------------
+
+VM INVENTORY TRACKING:
+
+VM Information Fields:
+IDENTIFICATION:
+- VM Name
+- Knox ID
+- Requestor
+- Department
+
+HOST DETAILS:
+- Host Server/Platform
+- Datacenter/Location
+- Cloud Platform (AWS/Azure/GCP/On-premise)
+
+RESOURCE ALLOCATION:
+- CPU Cores
+- RAM (GB)
+- Storage (GB)
+- Network Configuration
+
+NETWORK INFO:
+- VM IP Address (encrypted)
+- IP Address (encrypted)
+- MAC Address (encrypted)
+- Hostname
+- Network Segment
+
+LIFECYCLE:
+- Start Date
+- End Date
+- Approval Number
+- Status:
+  * Active
+  * Overdue - Notified
+  * Overdue - Not Notified
+  * Decommissioned
+
+VM OPERATIONS:
+
+1. Add Virtual Machine:
+   - VM identification
+   - Host configuration
+   - Resource allocation
+   - Network setup
+   - Lifecycle dates
+   - Approval documentation
+
+2. Update VM:
+   - Modify specifications
+   - Update status
+   - Change allocation
+   - Extend duration
+   - Update approval
+
+3. Decommission VM:
+   - Status change
+   - Resource cleanup
+   - Documentation
+   - Audit trail
+
+4. Extend VM Duration:
+   - Update end date
+   - New approval number
+   - Notification
+   - Status update
+
+AUTOMATED MONITORING:
+
+Daily Expiration Checks:
+- Runs at application startup
+- Runs every 24 hours
+- Checks end dates
+- Updates status automatically
+- Sends email notifications
+
+Status Management:
+- Active: Within date range
+- Overdue - Notified: Email sent
+- Overdue - Not Notified: Past end date
+- Decommissioned: Manually marked
+
+Email Notifications:
+- Automatic alerts for overdue VMs
+- Sent to requestor
+- Includes VM details
+- Status update confirmation
+- Prevents duplicate emails
+
+REPORTING:
+- VM utilization reports
+- Expiration forecasting
+- Resource allocation analysis
+- Compliance tracking
+- Cost analysis (if applicable)
+
+--------------------------------------------------------------------------------
+13. APPROVAL & COMPLIANCE MONITORING
+--------------------------------------------------------------------------------
+
+APPROVAL TRACKING SYSTEM:
+
+Approval Information:
+CLASSIFICATION:
+- Type (Server, Application, Database, Network, Storage, etc.)
+- Platform (AWS, Azure, GCP, On-premise, Hybrid)
+
+OWNERSHIP:
+- PIC (Person in Charge)
+- Department
+- Requestor
+
+TECHNICAL DETAILS:
+- IP Address
+- Hostname/Accounts
+- Identifier/Serial Number
+- Service Details
+
+APPROVAL DETAILS:
+- Approval Number
+- Start Date
+- End Date
+- Renewal Information
+
+STATUS:
+- Active (within date range)
+- Expired (past end date)
+- Auto-calculated based on dates
+
+REMARKS:
+- Notes
+- Documentation
+- Special conditions
+
+APPROVAL OPERATIONS:
+
+1. Add Approval:
+   - Type selection
+   - Platform identification
+   - PIC assignment
+   - Technical details
+   - Approval documentation
+   - Date range setting
+
+2. Update Approval:
+   - Modify any field
+   - Extend duration
+   - Update approval number
+   - Change PIC
+   - Add remarks
+
+3. CSV Import:
+   - Robust CSV parsing
+   - Handles quoted fields
+   - Special character support
+   - Multiple header formats
+   - Field normalization
+   - Error validation
+   - Success confirmation
+
+4. CSV Export:
+   - Template download
+   - Sample data included
+   - Filtered export
+   - All fields included
+   - Date formatting
+
+EXPIRATION MONITORING:
+
+Automated Checks:
+- Daily expiration verification
+- Status calculation
+- Email notifications
+- Alert generation
+- Compliance reporting
+
+Manual Operations:
+- Check expiration button
+- Immediate verification
+- Manual notification trigger
+- Status refresh
+- Batch processing
+
+Notification System:
+- Email alerts for expired approvals
+- Sent to PIC and requestor
+- Includes approval details
+- Renewal instructions
+- Compliance reminders
+
+ADVANCED FEATURES:
+
+Filtering & Search:
+- Type filtering
+- Platform filtering
+- PIC search
+- IP address search
+- Hostname/account search
+- Identifier/serial search
+- Approval number search
+- Status filtering
+- Multi-criteria filtering
+- Clear all filters
+
+Sorting:
+- Multi-column sorting
+- Ascending/descending
+- Date-based sorting
+- Alphabetical sorting
+
+Pagination:
+- 5-100 records per page
+- Page navigation
+- Record count display
+- Jump to page
+
+Data Management:
+- Bulk operations
+- Batch updates
+- Mass import
+- Filtered export
+- Data validation
+
+================================================================================
+                    PART IV: MONITORING & DISCOVERY
+================================================================================
+
+--------------------------------------------------------------------------------
+14. VM PERFORMANCE MONITORING (ZABBIX)
+--------------------------------------------------------------------------------
+
+ZABBIX INTEGRATION:
+
+Integration Features:
+- Real-time VM monitoring
+- Automated data synchronization
+- API-based communication
+- Secure authentication
+- Performance metrics collection
+
+Configuration:
+ZABBIX CONNECTION:
+- Zabbix Server URL: http://your-zabbix-server/zabbix
+- API Key: Generated from Zabbix admin
+- Connection timeout: 30 seconds
+- Retry mechanism: 3 attempts
+
+SYNC SETTINGS:
+- Sync Interval: 5 minutes (configurable)
+- Auto-sync toggle
+- Manual sync trigger
+- Last sync timestamp
+
+ALERT THRESHOLDS:
+- CPU Usage: 80% (warning), 90% (critical)
+- Memory Usage: 85% (warning), 95% (critical)
+- Disk Usage: 90% (warning), 95% (critical)
+- Network Traffic: Configurable
+- Custom metrics: User-defined
+
+MONITORING CAPABILITIES:
+
+Performance Metrics:
+1. CPU Utilization:
+   - Current usage percentage
+   - Historical trends
+   - Peak usage times
+   - Average over time
+   - Core-level metrics
+
+2. Memory Usage:
+   - Total memory
+   - Used memory
+   - Free memory
+   - Cache/Buffer usage
+   - Swap utilization
+
+3. Disk Space:
+   - Total capacity
+   - Used space
+   - Free space
+   - I/O operations
+   - Read/write speeds
+
+4. Network Performance:
+   - Bandwidth usage
+   - Packets sent/received
+   - Network errors
+   - Connection count
+   - Interface statistics
+
+VISUALIZATION:
+
+Dashboard Widgets:
+- Real-time metric cards
+- Line charts (trends)
+- Bar charts (comparison)
+- Gauge charts (current status)
+- Heat maps (historical)
+
+Time Ranges:
+- Last hour
+- Last 24 hours
+- Last 7 days
+- Last 30 days
+- Custom range
+
+ALERTING SYSTEM:
+
+Alert Types:
+- Performance threshold breaches
+- Service failures
+- Resource saturation
+- Network issues
+- Custom triggers
+
+Alert Channels:
+- Email notifications
+- In-app notifications
+- SMS (if configured)
+- Webhook integration
+- Dashboard alerts
+
+Alert Management:
+- Alert history
+- Acknowledgment system
+- Alert escalation
+- Silence/snooze alerts
+- Alert grouping
+
+AUTOMATED FEATURES:
+
+Auto-Sync:
+- Periodic data refresh
+- Background processing
+- Error recovery
+- Connection retry
+- Data caching
+
+Health Checks:
+- VM availability
+- Service status
+- Resource health
+- Connectivity tests
+- Automated remediation
+
+--------------------------------------------------------------------------------
+15. NETWORK DISCOVERY & SCANNING
+--------------------------------------------------------------------------------
+
+NETWORK DISCOVERY FEATURES:
+
+Discovery Capabilities:
+- IP address scanning
+- Hostname resolution
+- Port scanning
+- Service detection
+- Operating system fingerprinting
+- Hardware detection
+- MAC address discovery
+- Network topology mapping
+
+SCAN CONFIGURATION:
+
+Target Configuration:
+SUBNET SCANNING:
+- CIDR notation support (e.g., 192.168.1.0/24)
+- Multiple subnet scanning
+- IP range specification
+- Exclude lists
+
+PORT SCANNING:
+- Common ports: 22, 80, 443, 3389, 3306, 5432
+- Custom port ranges
+- Port list (comma-separated)
+- Well-known services
+- Custom service detection
+
+DNS CONFIGURATION:
+- Primary DNS: 107.105.134.9
+- Secondary DNS: 107.105.134.8
+- Custom DNS servers
+- DNS resolution options
+
+SCAN PARAMETERS:
+- Timeout: 1-30 seconds (default: 5)
+- Retry count: 1-5 (default: 3)
+- Concurrent scans: 1-100
+- Scan speed: Slow/Normal/Fast/Aggressive
+
+DISCOVERY RESULTS:
+
+Device Information:
+NETWORK DETAILS:
+- IP address
+- Hostname (FQDN)
+- MAC address
+- Network interface
+- Subnet mask
+- Gateway
+
+SERVICES:
+- Open ports
+- Running services
+- Service versions
+- Protocol types
+- Service banners
+
+HARDWARE:
+- Device type (router, switch, server, workstation)
+- Manufacturer (if detectable)
+- Model information
+- CPU details
+- Memory capacity
+- Storage devices
+- Network interfaces
+
+SOFTWARE:
+- Operating system
+- OS version
+- Installed applications
+- Service versions
+- Update status
+
+TOPOLOGY:
+- Network segments
+- Device connections
+- Routing paths
+- VLAN information
+- Network hierarchy
+
+SCAN OPERATIONS:
+
+1. Configure Scan:
+   - Set target subnet(s)
+   - Define port ranges
+   - Configure DNS
+   - Set timeout/retry
+   - Choose scan speed
+
+2. Start Scan:
+   - Initiate discovery
+   - Monitor progress
+   - Real-time results
+   - Error handling
+
+3. View Results:
+   - Device list
+   - Service matrix
+   - Network map
+   - Export data
+
+4. Save Results:
+   - Database storage
+   - Historical tracking
+   - Change detection
+   - Report generation
+
+ADVANCED FEATURES:
+
+Scheduled Scans:
+- Recurring scans
+- Time-based triggers
+- Automatic updates
+- Change notifications
+
+Change Detection:
+- New device alerts
+- Service changes
+- Configuration drift
+- Security monitoring
+
+Integration:
+- Asset auto-discovery
+- Inventory updates
+- CMDB synchronization
+- Security alerts
+
+Reporting:
+- Network inventory
+- Service catalog
+- Compliance reports
+- Security assessments
+
+--------------------------------------------------------------------------------
+16. IAM ACCOUNT MANAGEMENT
+--------------------------------------------------------------------------------
+
+IAM ACCOUNT TRACKING:
+
+Account Information:
+IDENTITY:
+- Requestor
+- Knox ID
+- Department
+- User/Service Account
+
+PERMISSIONS:
+- Permission Type
+- Role Assignment
+- Access Level
+- Resource Scope
+
+PLATFORM:
+- Cloud Platform (AWS, Azure, GCP)
+- On-premise systems
+- Third-party services
+- Multi-platform access
+
+COMPLIANCE:
+- Approval ID/Number
+- Approval Date
+- Duration (Start/End dates)
+- Renewal Information
+
+STATUS:
+- Active (within duration)
+- Extended (renewed)
+- Expired - Notified (email sent)
+- Expired - Not Notified (pending email)
+- Access Removed (deactivated)
+
+IAM OPERATIONS:
+
+1. Add IAM Account:
+   - Requestor information
+   - Knox ID assignment
+   - Permission configuration
+   - Platform selection
+   - Approval documentation
+   - Duration setting
+
+2. Update Account:
+   - Modify permissions
+   - Extend duration
+   - Change platform
+   - Update approval
+   - Status change
+
+3. Extend Account:
+   - New end date
+   - Updated approval
+   - Status to "Extended"
+   - Notification sent
+
+4. Remove Access:
+   - Deactivate account
+   - Status to "Access Removed"
+   - Documentation
+   - Audit trail
+
+AUTOMATED MONITORING:
+
+Daily Expiration Checks:
+- Runs at startup
+- Runs every 24 hours
+- Checks end dates
+- Auto-updates status
+- Triggers notifications
+
+Status Workflow:
+1. Active → Expired - Not Notified (when end date passed)
+2. Expired - Not Notified → Expired - Notified (after email sent)
+3. Never sends duplicate emails
+4. Maintains notification history
+
+Email Notifications:
+- Sent to requestor
+- Includes account details
+- Platform information
+- Expiration date
+- Renewal instructions
+- Compliance reminders
+
+COMPLIANCE FEATURES:
+
+Access Reviews:
+- Regular account audits
+- Permission verification
+- Usage analysis
+- Compliance reporting
+
+Approval Tracking:
+- Approval number validation
+- Approval date tracking
+- Renewal history
+- Expiration monitoring
+
+Reporting:
+- Active accounts report
+- Expiration forecast
+- Platform distribution
+- Department usage
+- Compliance status
+
+--------------------------------------------------------------------------------
+17. BITLOCKER KEY MANAGEMENT
+--------------------------------------------------------------------------------
+
+🔒 SECURITY CRITICAL - ADMIN ACCESS ONLY
+
+BITLOCKER KEY STORAGE:
+
+Key Information:
+DEVICE IDENTIFICATION:
+- Serial Number (encrypted)
+- Device Identifier (encrypted)
+- Computer Name
+- Asset Tag (linked)
+
+RECOVERY KEY:
+- BitLocker Recovery Key (AES-256-GCM encrypted)
+- Key ID
+- Creation Date
+- Last Accessed
+
+ASSIGNMENT:
+- Associated User
+- Department
+- Location
+- Responsible Person
+
+SECURITY FEATURES:
+
+Access Control:
+- Admin-only access
+- Two-factor authentication required
+- Session verification
+- IP address logging
+- Access time limits
+
+Encryption:
+- AES-256-GCM encryption
+- Unique IV per key
+- Authentication tags
+- Key rotation support
+- Secure key derivation
+
+Audit Trail:
+- All access logged
+- User identification
+- Timestamp recording
+- Purpose documentation
+- Action tracking
+
+KEY OPERATIONS:
+
+1. Add BitLocker Key:
+   Navigation: BitLocker Keys → Add Key
+   Required:
+   - Serial number
+   - Device identifier
+   - Recovery key
+   Optional:
+   - Asset association
+   - User assignment
+   - Location
+   - Notes
+
+   Process:
+   - Enter device information
+   - Input recovery key
+   - Automatic encryption
+   - Link to asset (if available)
+   - Assign to user
+   - Save with audit
+
+2. Search Keys:
+   Search By:
+   - Serial number
+   - Device identifier
+   - Computer name
+   - Asset tag
+   - User assignment
+
+   Security:
+   - Authorization check
+   - MFA verification
+   - Access logging
+
+3. Retrieve Recovery Key:
+   Process:
+   - Verify authorization
+   - Confirm identity
+   - Decrypt key
+   - Display recovery key
+   - Log access event
+   - Document purpose
+
+   Security:
+   - Admin password required
+   - MFA verification
+   - Session validation
+   - Temporary display (auto-hide)
+   - Copy protection
+
+4. Update Key Information:
+   - Modify device details
+   - Update assignment
+   - Change location
+   - Add notes
+   - Maintain encryption
+
+EMERGENCY ACCESS:
+
+Emergency Procedures:
+1. User locked out of device
+2. Admin verifies identity
+3. Admin searches for device key
+4. Authorization verified
+5. Recovery key retrieved
+6. Key provided to authorized user
+7. Access logged for compliance
+8. Follow-up documentation
+
+Emergency Contacts:
+- IT Help Desk
+- System Administrator
+- Security Officer
+- Department Manager
+
+COMPLIANCE & AUDIT:
+
+Audit Features:
+- Complete access history
+- User tracking
+- Purpose documentation
+- Time-stamped logs
+- Export audit reports
+
+Compliance Requirements:
+- Regular access reviews
+- Key rotation schedule
+- Encryption verification
+- Security assessments
+- Policy enforcement
+
+Reporting:
+- Access frequency
+- User patterns
+- Device coverage
+- Key utilization
+- Security metrics
+
+BEST PRACTICES:
+
+Key Management:
+- Regular key backup
+- Secure key storage
+- Access minimization
+- Periodic audits
+- Documentation updates
+
+Security Guidelines:
+- Least privilege access
+- Strong authentication
+- Regular reviews
+- Incident response
+- Training requirements
+
+================================================================================
+                    PART V: ADVANCED ADMINISTRATION
+================================================================================
+
+--------------------------------------------------------------------------------
+18. USER MANAGEMENT & PERMISSIONS
+--------------------------------------------------------------------------------
+
+USER ROLES SYSTEM:
+
+Built-in Roles:
+1. ADMINISTRATOR
+   Description: Complete system control
+   Default Permissions: All modules (View, Edit, Add, Delete)
+   Special Access:
+   - System configuration
+   - User management
+   - Database operations
+   - Security settings
+   - All administrative functions
+
+2. ASSET MANAGER
+   Description: Asset lifecycle management
+   Default Permissions:
+   - Assets: View, Edit, Add, Delete
+   - Components: View, Edit, Add
+   - Accessories: View, Edit, Add
+   - Licenses: View, Edit, Add
+   - Reports: View, Add
+   Limited Access:
+   - No user management
+   - No system configuration
+   - No database operations
+
+3. DEPARTMENT USER
+   Description: Department-level access
+   Default Permissions:
+   - Assets: View (department only)
+   - Components: View
+   - Accessories: View
+   - Reports: View
+   Limited Access:
+   - Can request assets
+   - Cannot modify system data
+   - Department-scoped visibility
+
+4. READ-ONLY USER
+   Description: View-only access
+   Default Permissions:
+   - All modules: View only
+   - No edit capabilities
+   - No delete permissions
+   - Can generate reports
+
+GRANULAR PERMISSION SYSTEM:
+
+Permission Modules (View/Edit/Add/Delete per module):
+✓ Users - User account management
+✓ Assets - Hardware inventory
+✓ Components - Internal hardware parts
+✓ Accessories - Peripheral devices
+✓ Licenses - Software licenses
+✓ VM Inventory - Virtual machines
+✓ VM Monitoring - Performance monitoring
+✓ Network Discovery - Network scanning
+✓ BitLocker Keys - Recovery keys
+✓ IAM Accounts - Cloud IAM
+✓ Reports - Reporting system
+✓ Admin Panel - System administration
+✓ Azure Inventory - Azure resources
+✓ GCP Inventory - Google Cloud
+✓ AWS Inventory - Amazon Web Services
+✓ Approval Monitoring - Compliance tracking
+
+Permission Levels:
+- VIEW: Read-only access to module
+- EDIT: Modify existing records
+- ADD: Create new records
+- DELETE: Remove records
+
+USER MANAGEMENT OPERATIONS:
+
+1. Create User:
+   Navigation: User Management → Add User
+
+   Required Fields:
+   - Username (unique)
+   - First Name
+   - Last Name
+   - Email address
+   - Department
+   - Initial password
+
+   Optional:
+   - Phone number
+   - Location
+   - Employee ID
+   - Manager
+
+   Settings:
+   - Role selection OR custom permissions
+   - Admin status toggle
+   - Account activation
+   - Force password change on first login
+   - Email notification preferences
+
+2. Edit User:
+   - Update personal information
+   - Change department
+   - Modify contact details
+   - Update employment info
+
+3. Manage Permissions:
+   Navigation: Admin → User Permissions
+
+   Methods:
+   A. Role-Based:
+      - Select predefined role
+      - Automatic permission assignment
+      - Role templates
+
+   B. Custom Permissions:
+      - Individual module selection
+      - Granular permission levels
+      - Permission templates
+      - Bulk permission updates
+
+   Process:
+   - Select user
+   - Choose role OR set custom permissions
+   - Configure module access
+   - Set permission levels (View/Edit/Add/Delete)
+   - Save changes
+   - Optional: Notify user
+
+4. Reset Password:
+   Navigation: Admin → Password Management
+
+   Options:
+   - Generate temporary password
+   - Force change on next login
+   - Send reset email
+   - Manual password set
+
+   Security:
+   - Admin verification required
+   - Password policy enforcement
+   - History checking
+   - Expiration reset
+
+5. MFA Management:
+   Navigation: Admin → MFA Management
+
+   Operations:
+   - View MFA status (all users)
+   - Enable/Disable MFA
+   - Force MFA re-enrollment
+   - Emergency MFA bypass
+   - MFA compliance report
+
+   Emergency Disable:
+   - Requires admin password
+   - Justification required
+   - Audit log entry
+   - Temporary bypass option
+
+6. Account Status:
+   - Activate account
+   - Deactivate account
+   - Lock account
+   - Unlock account
+   - Delete account (admin only)
+
+BULK OPERATIONS:
+
+CSV Import Users:
+1. Download template
+2. Fill user information:
+   - username, firstName, lastName
+   - email, department
+   - password (optional)
+   - isAdmin (true/false)
+3. Upload CSV file
+4. Review import preview
+5. Confirm import
+6. System creates accounts
+7. Email notifications sent
+
+Bulk Permission Updates:
+- Select multiple users
+- Apply role template
+- Set common permissions
+- Department-based permissions
+- Batch activation/deactivation
+
+USER ACTIVITY MONITORING:
+
+Activity Tracking:
+- Login/logout events
+- Asset operations
+- Data modifications
+- Report generation
+- Export activities
+- Configuration changes
+- Permission changes
+
+Audit Trail:
+- Complete action history
+- User identification
+- Timestamp logging
+- Before/after values
+- IP address tracking
+- Session information
+
+Reports:
+- User activity summary
+- Login history
+- Failed login attempts
+- Permission usage
+- Compliance reports
+
+ADVANCED FEATURES:
+
+Department Management:
+- Department hierarchies
+- Department-based access
+- Manager assignments
+- Departmental permissions
+- Resource allocation
+
+Password Policies:
+- Minimum length (8-20 chars)
+- Complexity requirements
+- Character types
+- Password history (5-10 passwords)
+- Expiration period (30-365 days)
+- Grace period
+- Account lockout
+
+Session Management:
+- Session timeout (15-480 minutes)
+- Concurrent session limits
+- Session revocation
+- Remote logout
+- Activity-based extension
+
+--------------------------------------------------------------------------------
+19. DATA SECURITY & ENCRYPTION
+--------------------------------------------------------------------------------
+
+ENCRYPTION SYSTEM:
+
+Encryption Technology:
+- Algorithm: AES-256-GCM (Authenticated Encryption)
+- Key Size: 256-bit
+- Mode: Galois/Counter Mode
+- Authentication: Built-in authentication tags
+- IV: Unique per field encryption
+
+ENCRYPTION SETUP:
+
+⚠️ ENCRYPTION IS DISABLED BY DEFAULT
+
+ENABLING ENCRYPTION:
+Step 1: Generate Encryption Key
+1. Set up environment variable ENCRYPTION_KEY
+2. Value: Generate random 32+ character string
+   Methods:
+   a. Node.js: crypto.randomBytes(32).toString('base64')
+   b. OpenSSL: openssl rand -base64 32
+3. Add to .env file or system environment variables
+
+Step 2: Restart Application
+- System detects ENCRYPTION_KEY
+- Encryption system activates
+- Console shows: "✅ ENCRYPTION ENABLED"
+
+Step 3: Encrypt Existing Data
+- Navigate to Admin → Data Encryption
+- Click "Encrypt All Data"
+- Enter admin password
+- Confirm operation
+- Wait for completion
+- Verify encryption status
+
+ENCRYPTED FIELDS:
+
+User Data:
+- email
+- firstName
+- lastName
+- department
+
+Assets:
+- serialNumber
+- macAddress
+- ipAddress
+
+BitLocker Keys:
+- serialNumber
+- identifier
+- recoveryKey (critical)
+
+VM Inventory:
+- requestor
+- vmIp
+- ipAddress
+- macAddress
+
+IAM Accounts:
+- requestor
+
+IT Equipment:
+- serialNumber
+
+Monitor Inventory:
+- assetNumber
+- serialNumber
+
+Note: Knox IDs are NOT encrypted to maintain search functionality
+
+ENCRYPTION FEATURES:
+
+Data Protection:
+- Field-level encryption
+- Unique IV per field
+- Authentication tags for integrity
+- Tamper detection
+- Secure key storage
+
+Backward Compatibility:
+- Works with unencrypted data
+- Gradual migration support
+- Mixed data handling
+- No data loss
+
+Performance:
+- Efficient encryption/decryption
+- Minimal overhead
+- Optimized queries
+- Cached operations
+
+ENCRYPTION OPERATIONS:
+
+1. Encrypt All Data:
+   Navigation: Admin → Data Encryption
+
+   Process:
+   - Click "Encrypt All Data"
+   - Enter admin password
+   - System encrypts all unencrypted PII
+   - Progress indication
+   - Completion notification
+   - Verification check
+
+   Security:
+   - Admin authentication required
+   - Operation logged
+   - Backup recommended before operation
+
+2. Decrypt All Data:
+   ⚠️ WARNING: Use only for migration or key rotation
+
+   Navigation: Admin → Data Encryption
+
+   Process:
+   - Click "Decrypt All Data"
+   - Enter admin password
+   - Confirm decryption
+   - System decrypts all data
+   - Data stored in plain text
+   - Warning notifications
+
+   Use Cases:
+   - Encryption key rotation
+   - System migration
+   - Backup for transfer
+   - Emergency access
+
+3. Check Encryption Status:
+   - View encryption enabled/disabled
+   - Count encrypted fields
+   - Verify key availability
+   - Test encryption/decryption
+
+KEY MANAGEMENT:
+
+Best Practices:
+- Store key in secure environment
+- Never commit key to version control
+- Use environment variables
+- Rotate keys periodically
+- Backup encrypted key securely
+- Document key location
+
+Key Rotation:
+1. Decrypt all data with old key
+2. Update ENCRYPTION_KEY
+3. Restart application
+4. Encrypt all data with new key
+5. Verify encryption
+6. Backup new key
+7. Destroy old key securely
+
+Emergency Recovery:
+- Maintain key backup
+- Document recovery procedure
+- Test recovery process
+- Store backup separately
+- Use key escrow if required
+
+COMPLIANCE:
+
+Security Standards:
+- FIPS 140-2 compliant algorithm
+- NIST recommended
+- Industry best practices
+- Regular security audits
+
+Data Protection:
+- PII encryption
+- GDPR compliance support
+- HIPAA considerations
+- Data residency
+
+Audit & Logging:
+- Encryption operations logged
+- Key access tracked
+- Decryption events recorded
+- Compliance reports
+
+--------------------------------------------------------------------------------
+20. SYSTEM CONFIGURATION
+--------------------------------------------------------------------------------
+
+SYSTEM SETUP ACCESS:
+Navigation: Administration → System Setup
+
+GENERAL SETTINGS:
+
+Site Configuration:
+- Site Name: Organization/Hospital name
+- Site URL: Application URL (http://0.0.0.0:5000)
+- Default Language: Interface language
+  Options: English, Spanish, French, etc.
+- Default Timezone: System timezone
+  Options: UTC, America/New_York, Asia/Manila, etc.
+- Date Format: Display format (MM/DD/YYYY, DD/MM/YYYY)
+- Currency: Cost display (USD, EUR, PHP)
+
+Registration:
+- Public Registration: Enable/Disable
+- Email Verification: Required/Optional
+- Registration Approval: Auto/Manual
+- Default Role: New user role
+
+COMPANY INFORMATION:
+
+Organization Details:
+- Company/Organization Name
+- Address Line 1
+- Address Line 2
+- City/State/Province
+- Postal/ZIP Code
+- Country
+- Phone Number
+- Fax Number
+- Email Address
+- Website URL
+- Company Logo: URL or upload
+- Favicon: URL or upload
+
+Display Settings:
+- Logo on login page
+- Logo on dashboard
+- Logo on reports
+- Footer information
+
+EMAIL CONFIGURATION:
+
+SMTP Settings:
+Required:
+- Sender Email: noreply@yourorg.com
+- Sender Name: Organization name
+- SMTP Server: smtp.gmail.com (or provider)
+- SMTP Port:
+  * 587 (TLS - recommended)
+  * 465 (SSL)
+  * 25 (Unencrypted - not recommended)
+- Username: SMTP username/email
+- Password: SMTP password/app password
+- Security: TLS/SSL/None
+
+Advanced:
+- Connection timeout: 30 seconds
+- Max retries: 3
+- Queue processing
+- Email logging
+
+Test Configuration:
+1. Enter test email address
+2. Click "Send Test Email"
+3. Check inbox/spam folder
+4. Verify delivery
+5. Review test results
+
+Email Templates:
+- Welcome email
+- Password reset
+- Asset checkout notification
+- Asset checkin notification
+- Expiration alerts
+- Custom templates
+
+ASSET SETTINGS:
+
+Asset Configuration:
+- Asset Tag Prefix: Default prefix (e.g., "SRPH", "MIS")
+- Starting Number: Initial sequence number
+- Auto-increment: Enable/Disable
+- Tag Format: PREFIX-000001 (customizable)
+- Barcode Generation: Enable/Disable
+- QR Code Generation: Enable/Disable
+
+Workflows:
+- Checkout/Checkin: Enable/Disable
+- Approval Required: Yes/No
+- Assignment Notifications: Enable/Disable
+- Return Reminders: Enable/Disable
+
+Tracking:
+- Warranties: Enable/Disable
+- Maintenance: Enable/Disable
+- Depreciation: Enable/Disable
+- Custom Fields: Add/Remove
+
+Categories:
+- Predefined categories
+- Custom categories
+- Category hierarchies
+- Category icons
+
+SECURITY SETTINGS:
+
+Session Configuration:
+- Session Timeout: 15-480 minutes (default: 120)
+- Inactivity Timeout: 15-120 minutes
+- Extend on Activity: Yes/No
+- Concurrent Sessions: Limit per user
+- Remember Me Duration: 1-90 days
+
+Login Security:
+- Max Login Attempts: 3-10 (default: 5)
+- Account Lockout Duration: 5-120 minutes
+- CAPTCHA After Attempts: 3-5 attempts
+- IP-based Lockout: Enable/Disable
+- Login Notifications: Enable/Disable
+
+Password Policy:
+- Minimum Length: 8-20 characters (default: 8)
+- Require Uppercase: Yes/No
+- Require Lowercase: Yes/No
+- Require Numbers: Yes/No
+- Require Special Characters: Yes/No
+- Password History: 5-10 passwords
+- Password Expiration: 30-365 days (default: 90)
+- Grace Period: 0-14 days
+- Complexity Score: Weak/Medium/Strong
+
+MFA Settings:
+- Enforce MFA: All users/Admins only/Optional
+- MFA Methods: Authenticator app/SMS/Email
+- Backup Codes: Generate/Regenerate
+- Grace Period: 0-14 days
+
+NOTIFICATION SETTINGS:
+
+Email Notifications:
+✓ Asset Checkout
+  - Send to: User, Manager, Admin
+  - Template: Customizable
+  - Include: Asset details, dates
+
+✓ Asset Checkin
+  - Send to: User, Manager
+  - Template: Customizable
+  - Include: Condition, notes
+
+✓ Maintenance Alert
+  - Send to: Asset Manager, Admin
+  - Contains: Asset information
+  - Maintenance due date
+  - Last maintenance
+  - Recommended actions
+
+Expiration Alerts:
+✓ Warranty Expiration
+  - Lead Time: 30-90 days (default: 30)
+  - Send to: Asset Manager, Admin
+  - Frequency: Daily/Weekly
+
+✓ License Expiration
+  - Lead Time: 30-90 days (default: 30)
+  - Send to: License Manager, Admin
+  - Frequency: Daily/Weekly
+
+✓ IAM Account Expiration
+  - Check Frequency: Daily
+  - Send to: Requestor, Admin
+  - Include: Renewal instructions
+
+✓ VM Expiration
+  - Check Frequency: Daily
+  - Send to: Requestor, Department
+  - Include: Extension process
+
+✓ Approval Expiration
+  - Check Frequency: Daily/Weekly
+  - Send to: PIC, Admin
+  - Include: Compliance info
+
+✓ System Maintenance
+  - Send to: All users/Admins
+  - Advanced Notice: Hours/Days
+  - Include: Downtime info
+
+✓ Low Stock Alerts
+  - Threshold: Customizable
+  - Send to: Inventory Manager
+  - Frequency: Daily
+
+✓ Cloud Resource Changes
+  - Send to: Cloud Admin
+  - Include: Change details
+  - Frequency: Real-time/Daily
+
+In-App Notifications:
+- Browser notifications
+- Toast messages
+- Alert banners
+- Notification center
+- Badge counts
+
+INTEGRATION SETTINGS:
+
+Zabbix Configuration:
+- Zabbix URL: http://zabbix-server/zabbix
+- API Token: Authentication key
+- Sync Interval: 1-60 minutes
+- Alert Thresholds: CPU/Memory/Disk
+- Enable/Disable integration
+
+Jira Integration:
+- Jira URL: https://yourorg.atlassian.net
+- API Token: Authentication
+- Project Key: Default project
+- Issue Types: Bug, Task, Story
+- Enable/Disable integration
+
+Active Directory:
+- LDAP Server: ldap://domain.com
+- Base DN: DC=domain,DC=com
+- Bind DN: Admin account
+- Sync Interval: Daily
+- User mapping
+
+API Settings:
+- API Key Generation
+- Rate Limiting
+- IP Whitelisting
+- Webhook URLs
+- API Documentation
+
+DISPLAY PREFERENCES:
+
+Interface:
+- Items per Page: 10-100 (default: 25)
+- Date Format: Various formats
+- Time Format: 12/24 hour
+- Number Format: 1,000.00 or 1.000,00
+- Default Theme: Light/Dark
+- Default Color: Theme color
+
+Dashboard:
+- Default Widgets
+- Widget Layout
+- Refresh Interval
+- Data Retention
+
+Tables:
+- Dense/Comfortable/Spacious
+- Sticky Headers
+- Column Resizing
+- Export Options
+
+MAINTENANCE SETTINGS:
+
+Backup Configuration:
+- Auto Backup: Enable/Disable
+- Backup Schedule: Daily/Weekly
+- Backup Time: 00:00-23:59
+- Retention Period: 7-365 days (default: 30)
+- Backup Location: Path
+- Email Notification: On success/failure
+
+Database Maintenance:
+- Auto Optimize: Enable/Disable
+- Optimize Schedule: Weekly
+- Index Rebuilding: Monthly
+- Statistics Update: Weekly
+- Cleanup Old Logs: Daily
+
+System Updates:
+- Auto Update Check: Enable/Disable
+- Update Notifications: Admin/All
+- Maintenance Window: Schedule
+- Rollback Option: Enable
+
+--------------------------------------------------------------------------------
+21. EMAIL & NOTIFICATIONS
+--------------------------------------------------------------------------------
+
+EMAIL SYSTEM:
+
+Email Service Configuration:
+Access: Administration → Email Notifications
+
+SMTP Setup (Detailed):
+1. Email Provider Selection:
+   - Gmail (smtp.gmail.com)
+   - Outlook (smtp-mail.outlook.com)
+   - Office 365 (smtp.office365.com)
+   - Custom SMTP server
+
+2. Gmail Setup (Example):
+   - Enable 2FA on Google Account
+   - Generate App Password:
+     * Google Account → Security
+     * 2-Step Verification → App passwords
+     * Generate password for "Mail"
+   - SMTP Settings:
+     * Server: smtp.gmail.com
+     * Port: 587 (TLS)
+     * Username: your-email@gmail.com
+     * Password: App password (16 characters)
+
+3. Office 365 Setup:
+   - SMTP Server: smtp.office365.com
+   - Port: 587
+   - Security: TLS
+   - Authentication: Modern Auth
+   - Username: email@organization.com
+   - Password: Account password
+
+Email Templates:
+- HTML templates
+- Plain text fallback
+- Dynamic placeholders
+- Custom branding
+- Multilingual support
+
+NOTIFICATION TYPES:
+
+Asset Notifications:
+1. Checkout Notification:
+   Sent to: User, Manager
+   Contains:
+   - Asset details (name, tag, serial)
+   - Checkout date
+   - Expected return date
+   - Assigned user
+   - Notes
+   - Manager approval (if required)
+
+2. Checkin Notification:
+   Sent to: User, Manager
+   Contains:
+   - Asset details
+   - Checkin date
+   - Condition report
+   - Location
+   - Notes
+
+3. Maintenance Alert:
+   Sent to: Asset Manager, Admin
+   Contains:
+   - Asset information
+   - Maintenance due date
+   - Last maintenance
+   - Recommended actions
+
+Expiration Alerts:
+1. Warranty Expiration:
+   Trigger: 30 days before (configurable)
+   Sent to: Asset Manager, Admin
+   Contains:
+   - Asset details
+   - Warranty end date
+   - Vendor information
+   - Renewal options
+
+2. License Expiration:
+   Trigger: 30 days before
+   Sent to: License Manager, Admin
+   Contains:
+   - Software name
+   - License details
+   - Expiration date
+   - Seat count
+   - Renewal cost
+   - Vendor contact
+
+3. IAM Account Expiration:
+   Trigger: Daily check
+   Sent to: Requestor, Admin
+   Contains:
+   - Account details
+   - Knox ID
+   - Platform
+   - Expiration date
+   - Extension process
+
+4. VM Expiration:
+   Trigger: Daily check
+   Sent to: Requestor, Department
+   Contains:
+   - VM details
+   - Host information
+   - End date
+   - Approval number
+   - Extension procedure
+
+5. Approval Expiration:
+   Trigger: Manual or scheduled
+   Sent to: PIC, Admin
+   Contains:
+   - Approval details
+   - Type and platform
+   - Expiration date
+   - Renewal process
+   - Compliance reminders
+
+System Notifications:
+1. Maintenance Notification:
+   Sent to: All users or Admins
+   Contains:
+   - Maintenance window
+   - Expected duration
+   - Affected services
+   - Alternative access
+
+2. Backup Status:
+   Sent to: Admins
+   Contains:
+   - Backup success/failure
+   - Backup size
+   - Duration
+   - Next scheduled backup
+
+3. Security Alerts:
+   Sent to: Security team, Admins
+   Contains:
+   - Alert type
+   - Affected resource
+   - Severity
+   - Recommended action
+
+AUTOMATED TASKS:
+
+Daily Checks:
+- Runs at application startup
+- Runs every 24 hours thereafter
+- Checks:
+  * IAM account expirations
+  * VM expirations
+  * Warranty expirations
+  * License expirations
+  * Approval expirations
+
+Email Queue:
+- Queued sending
+- Retry on failure (3 attempts)
+- Failed email logging
+- Delivery tracking
+- Bounce handling
+
+NOTIFICATION MANAGEMENT:
+
+User Preferences:
+- Email frequency (real-time, daily digest, weekly)
+- Notification types (select/deselect)
+- Delivery method (email, in-app, both)
+- Time preferences (business hours only)
+
+Admin Controls:
+- Enable/disable globally
+- Override user preferences
+- Force critical notifications
+- Suppress non-critical
+- Test notifications
+
+Notification Center:
+- In-app notification panel
+- Unread count badge
+- Mark as read/unread
+- Notification history
+- Clear all option
+- Filter by type
+
+EMAIL LOGGING:
+
+Log File: LOGS/email_notifications.log
+
+Logged Information:
+- Timestamp
+- Recipient(s)
+- Subject
+- Template used
+- Delivery status
+- Error messages (if failed)
+- Retry attempts
+
+Log Management:
+- Daily log rotation
+- 30-day retention
+- Automatic cleanup
+- Export logs
+- Search logs
+
+TROUBLESHOOTING:
+
+Common Issues:
+1. Emails Not Sending:
+   - Verify SMTP settings
+   - Check credentials
+   - Test connection
+   - Review logs
+   - Check firewall
+
+2. Emails in Spam:
+   - Configure SPF records
+   - Set up DKIM
+   - Configure DMARC
+   - Use verified domain
+   - Check content
+
+3. Delivery Delays:
+   - Check queue size
+   - Review server load
+   - Verify network
+   - Check provider limits
+
+Test Email Function:
+- Send test to specified address
+- Verify configuration
+- Check template rendering
+- Confirm delivery
+- Review format
+
+--------------------------------------------------------------------------------
+22. DATABASE MANAGEMENT
+--------------------------------------------------------------------------------
+
+DATABASE ACCESS:
+Navigation: Administration → Database
+
+DATABASE OPTIONS:
+
+1. PostgreSQL (Production):
+   - Persistent data storage
+   - ACID compliance
+   - Full backup support
+   - Connection pooling
+   - Performance optimization
+
+2. In-Memory (Development):
+   - Fast development
+   - No setup required
+   - Data not persistent
+   - Testing purposes
+
+POSTGRESQL SETUP:
+
+Replit Configuration:
+1. Open Replit Database tab
+2. Click "Create a database"
+3. Copy connection string
+4. Navigate to Tools → Secrets
+5. Add secret:
+   Name: DATABASE_URL
+   Value: Connection string
+6. Restart application
+
+Connection String Format:
+postgresql://username:password@host:port/database
+
+Verification:
+- Console message: "✅ PostgreSQL connection successful"
+- Console message: "✅ Using PostgreSQL database - data will persist"
+
+DATABASE OPERATIONS:
+
+1. View Status:
+   Information Displayed:
+   - Connection status
+   - Database type (PostgreSQL/In-memory)
+   - Database size
+   - Total tables
+   - Total records
+   - Last backup info
+   - Performance metrics
+
+2. Manual Backup:
+   Process:
+   - Click "Create Backup"
+   - Enter description
+   - System generates SQL dump
+   - Progress indication
+   - Download option
+   - Backup saved to /backups/
+
+   Backup Contents:
+   - Schema (tables, indexes, constraints)
+   - Data (all records)
+   - Sequences
+   - Compressed format
+
+3. Automated Backup:
+   Configuration:
+   - Enable auto backup
+   - Schedule: Daily at 2:00 AM (configurable)
+   - Retention: 30 days (configurable)
+   - Email notification: On success/failure
+   - Backup location: /backups/
+
+   Features:
+   - Automatic execution
+   - Integrity verification
+   - Cleanup old backups
+   - Failed backup alerts
+
+4. Restore Database:
+   Methods:
+
+   A. SQL Backup Restore:
+      - Select backup file from list OR upload
+      - Confirm restoration
+      - System stops operations
+      - Restores SQL dump
+      - Rebuilds indexes
+      - Restarts application
+
+   B. Complete Data Restore (JSON):
+      - Upload JSON backup file
+      - Validate format
+      - Confirm restoration
+      - Imports all data
+      - Preserves relationships
+      - Verification check
+
+   ⚠️ WARNING:
+   - All current data will be REPLACED
+   - Create backup before restoring
+   - Cannot be undone
+   - Requires admin password
+
+5. Database Optimization:
+   Maintenance Tasks:
+   - Rebuild indexes
+   - Update statistics
+   - Analyze tables
+   - Vacuum (PostgreSQL)
+   - Compress data
+
+   Scheduling:
+   - Manual execution
+   - Scheduled: Weekly (Sunday 3:00 AM)
+   - Duration: 15-30 minutes
+   - Performance impact: Minimal
+
+   Benefits:
+   - Improved query performance
+   - Reduced storage
+   - Better execution plans
+   - Faster searches
+
+6. Table Management:
+   Operations:
+   - View all tables
+   - Table structure
+   - Record counts
+   - Storage size
+   - Index information
+
+   Maintenance:
+   - Optimize specific tables
+   - Rebuild table indexes
+   - Update table statistics
+   - Analyze table usage
+
+PERFORMANCE MONITORING:
+
+Metrics Tracked:
+- Query execution time
+- Connection pool usage
+- Cache hit ratio
+- Table scan ratio
+- Index usage statistics
+- Slow query log
+
+Performance Dashboard:
+- Real-time metrics
+- Historical trends
+- Query performance
+- Resource utilization
+- Bottleneck identification
+
+Query Optimization:
+- Identify slow queries
+- Suggest index improvements
+- Query plan analysis
+- Optimization recommendations
+
+DATABASE SECURITY:
+
+Access Control:
+- Admin-only database access
+- Operation logging
+- IP whitelisting (if configured)
+- Connection encryption (SSL/TLS)
+
+Backup Security:
+- Encrypted backups
+- Secure storage location
+- Access logging
+- Retention policies
+
+Data Integrity:
+- Transaction logging
+- Referential integrity
+- Constraint enforcement
+- Validation checks
+
+DISASTER RECOVERY:
+
+Recovery Scenarios:
+
+1. Application Crash:
+   Recovery Time: 5 minutes
+   Data Loss: None
+   Procedure:
+   - Restart application
+   - Verify database connection
+   - Check data integrity
+
+2. Database Corruption:
+   Recovery Time: 30 minutes
+   Data Loss: Up to 24 hours
+   Procedure:
+   - Stop application
+   - Restore from latest backup
+   - Verify data integrity
+   - Restart application
+
+3. Server Failure:
+   Recovery Time: 2-4 hours
+   Data Loss: Up to 24 hours
+   Procedure:
+   - Deploy to new server
+   - Configure database connection
+   - Restore from backup
+   - Verify functionality
+
+4. Complete Site Disaster:
+   Recovery Time: 4-8 hours
+   Data Loss: Up to 24 hours
+   Procedure:
+   - Deploy to alternative site
+   - Set up database
+   - Restore from offsite backup
+   - Configure and test
+
+Recovery Testing:
+- Regular restore tests
+- Documented procedures
+- Trained personnel
+- Backup verification
+- RTO/RPO monitoring
+
+LOGS & MONITORING:
+
+Database Logs:
+Location: LOGS/database_ops_YYYY-MM-DD.log
+
+Logged Operations:
+- Connection events
+- Query execution
+- Backup operations
+- Restore operations
+- Optimization tasks
+- Error events
+- Performance issues
+
+Log Features:
+- Daily rotation
+- 90-day retention
+- Search capability
+- Export functionality
+- Alert triggers
+
+--------------------------------------------------------------------------------
+23. PAGE BUILDER (CUSTOM MODULES)
+--------------------------------------------------------------------------------
+
+DYNAMIC PAGE CREATION:
+
+Page Builder Access:
+Navigation: Administration → Page Builder
+
+OVERVIEW:
+The Page Builder allows administrators to create custom database tables and
+corresponding UI pages without coding. Perfect for organization-specific needs.
+
+CREATE CUSTOM PAGE:
+
+Step 1: Page Configuration
+Required Fields:
+- Page Name: Display name (e.g., "Employee Records")
+- Page Slug: URL path (e.g., "employee-records")
+  * Auto-generated from name
+  * Can be customized
+  * Must be unique
+  * Used in URL: /custom/employee-records
+- Table Name: Database table (e.g., "employee_records")
+  * Auto-generated from slug
+  * Lowercase with underscores
+  * Must be unique
+
+Optional Fields:
+- Description: Page purpose/usage
+- Icon: Icon name (from Lucide icons)
+- Enable Import: Allow CSV import (Yes/No)
+- Enable Export: Allow CSV export (Yes/No)
+
+Step 2: Column Configuration
+Add Columns:
+For each column, define:
+
+1. Column Name: Database field name
+   - Lowercase letters
+   - Underscores allowed
+   - No spaces or special chars
+   - Example: "employee_id", "full_name"
+
+2. Display Label: User-facing name
+   - Human-readable
+   - Spaces allowed
+   - Example: "Employee ID", "Full Name"
+
+3. Data Type:
+   - Text: String values (default 255 chars)
+   - Number: Integers or decimals
+   - Date: Date values (YYYY-MM-DD)
+   - Boolean: True/False checkbox
+   - Email: Email validation
+   - URL: URL validation
+   - JSON: Structured data
+
+4. Field Properties:
+   - Required: Must have value (Yes/No)
+   - Searchable: Include in search (Yes/No)
+   - Sortable: Allow sorting (Yes/No)
+   - Filterable: Include in filters (Yes/No)
+   - Default Value: Pre-filled value (optional)
+
+Example Column Configuration:
+```
+Column: employee_id
+Label: Employee ID
+Type: Text
+Required: Yes
+Searchable: Yes
+Sortable: Yes
+Filterable: Yes
+
+Column: full_name
+Label: Full Name
+Type: Text
+Required: Yes
+Searchable: Yes
+Sortable: Yes
+
+Column: hire_date
+Label: Hire Date
+Type: Date
+Required: Yes
+Sortable: Yes
+Filterable: Yes
+
+Column: is_active
+Label: Active Status
+Type: Boolean
+Required: Yes
+Filterable: Yes
+Default: true
+```
+
+Step 3: Create Page
+Process:
+1. Review configuration
+2. Click "Create Page"
+3. System performs:
+   - Table creation in database
+   - Column type mapping
+   - Constraint setup
+   - Index creation
+   - Route generation
+   - UI page creation
+4. Success confirmation
+5. Page immediately available
+
+AUTOMATIC FEATURES:
+
+Generated Automatically:
+✓ Database Table: PostgreSQL table with correct schema
+✓ CRUD Operations: Create, Read, Update, Delete
+✓ Search Functionality: Based on searchable columns
+✓ Filtering: Based on filterable columns
+✓ Sorting: Based on sortable columns
+✓ Pagination: 10-100 records per page
+✓ Form Validation: Based on required fields
+✓ CSV Import: If enabled (template auto-generated)
+✓ CSV Export: If enabled (filtered data support)
+✓ Route: /custom/[page-slug]
+✓ Navigation Menu: Added to sidebar
+
+Data Type Mapping:
+- Text → VARCHAR(255)
+- Number → NUMERIC
+- Date → DATE
+- Boolean → BOOLEAN
+- Email → VARCHAR(255) with validation
+- URL → VARCHAR(255) with validation
+- JSON → JSONB
+
+MANAGE EXISTING PAGES:
+
+View Pages:
+- List all custom pages
+- Page details
+- Column configuration
+- Usage statistics
+- Last modified date
+
+Edit Page:
+Operations:
+1. Update Configuration:
+   - Change name/description
+   - Update icon
+   - Toggle import/export
+   - Modify display settings
+
+2. Manage Columns:
+
+   A. Add New Column:
+      - Define column properties
+      - System adds to table (ALTER TABLE)
+      - Updates UI automatically
+      - Existing data unaffected
+
+   B. Rename Column:
+      - New column name
+      - Database column renamed
+      - UI updated
+      - Data preserved
+
+   C. Modify Properties:
+      - Change label
+      - Update searchable/sortable/filterable
+      - Modify default value
+      - Update required status
+
+   ⚠️ Cannot change data type of existing column
+   ⚠️ Cannot delete columns (prevents data loss)
+
+3. Update Settings:
+   - Modify permissions
+   - Change page visibility
+   - Update sorting defaults
+   - Configure page size
+
+Delete Page:
+Process:
+1. Click "Delete Page"
+2. Confirmation dialog
+3. Warning about data loss
+4. Enter admin password
+5. System performs:
+   - Drop database table
+   - Remove route
+   - Remove from navigation
+   - Delete page configuration
+6. Permanent deletion
+
+USING CUSTOM PAGES:
+
+Accessing Pages:
+- Sidebar navigation (under Custom Pages)
+- Direct URL: /custom/[page-slug]
+- Search: Global search includes custom pages
+
+Page Features:
+- Add new records (form)
+- Edit existing records
+- Delete records
+- Search records
+- Filter by columns
+- Sort by columns
+- Pagination
+- CSV import (if enabled)
+- CSV export (if enabled)
+
+CSV Operations:
+1. Import:
+   - Download template (auto-generated)
+   - Fill data
+   - Upload CSV
+   - Validation
+   - Import records
+
+2. Export:
+   - Apply filters (optional)
+   - Click export
+   - Download CSV
+   - Includes visible records
+
+USE CASES:
+
+Example Custom Pages:
+1. Employee Directory:
+   - Employee ID
+   - Name, Department
+   - Email, Phone
+   - Hire Date, Status
+
+2. Training Records:
+   - Training Name
+   - Employee
+   - Completion Date
+   - Certificate Number
+   - Expiry Date
+
+3. Vendor Management:
+   - Vendor Name
+   - Contact Person
+   - Service Type
+   - Contract Start/End
+   - Status
+
+4. Incident Tracking:
+   - Incident ID
+   - Date/Time
+   - Severity
+   - Description
+   - Resolution Status
+
+5. Room Booking:
+   - Room Name
+   - Booking Date/Time
+   - Duration
+   - Purpose
+   - Requester
+
+PERMISSIONS:
+
+Access Control:
+- Admin: Full access to Page Builder
+- Can create/edit/delete pages
+- Manage all custom pages
+- Configure permissions
+
+User Access:
+- Based on page permissions
+- View/Edit/Add permissions
+- Department-based access
+- Role-based access
+
+BEST PRACTICES:
+
+Planning:
+- Define clear purpose
+- Plan column structure
+- Consider data types carefully
+- Plan for future expansion
+
+Naming:
+- Use descriptive names
+- Follow naming conventions
+- Avoid reserved words
+- Be consistent
+
+Data Types:
+- Choose appropriate types
+- Consider validation needs
+- Plan for data growth
+- Use JSON for complex data
+
+Performance:
+- Enable searchable on key fields
+- Make commonly filtered fields filterable
+- Index important columns
+- Limit number of columns
+
+================================================================================
+                    PART VI: REPORTING & OPERATIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+24. REPORTING & ANALYTICS
+--------------------------------------------------------------------------------
+
+STANDARD REPORTS:
+
+Inventory Reports:
+1. Asset Inventory Summary:
+   - Total assets by category
+   - Status distribution
+   - Department allocation
+   - Location breakdown
+   - Value summary
+
+   Filters:
+   - Date range
+   - Category
+   - Department
+   - Status
+   - Condition
+
+2. Assets by Department:
+   - Department-wise listing
+   - Asset categories per department
+   - Utilization rates
+   - Cost breakdown
+   - Manager assignments
+
+3. Assets by Status:
+   - Available assets
+   - Deployed assets
+   - In maintenance
+   - Retired assets
+   - Status trends
+
+4. Asset Valuation Report:
+   - Purchase cost summary
+   - Current book value
+   - Depreciation calculation
+   - Total asset value
+   - Value by category
+
+5. Warranty Expiration:
+   - Assets with active warranties
+   - Expiring soon (30/60/90 days)
+   - Expired warranties
+   - Warranty costs
+   - Renewal recommendations
+
+6. Maintenance Schedule:
+   - Upcoming maintenance
+   - Overdue maintenance
+   - Maintenance history
+   - Cost analysis
+   - Vendor information
+
+7. Cloud Resource Inventory:
+   - Azure resources
+   - GCP resources
+   - AWS resources
+   - Resource types
+   - Regional distribution
+   - Cost allocation
+
+8. Approval Status Reports:
+   - Active approvals
+   - Expired approvals
+   - Pending renewals
+   - Compliance summary
+   - Platform breakdown
+
+Usage Reports:
+1. Asset Utilization:
+   - Utilization percentage
+   - Checkout frequency
+   - Average checkout duration
+   - Most/Least used assets
+   - Department utilization
+
+2. Checkout History:
+   - Complete checkout log
+   - User checkout patterns
+   - Department usage
+   - Return compliance
+   - Overdue assets
+
+3. User Activity Summary:
+   - Login frequency
+   - Asset operations
+   - Report generation
+   - Export activities
+   - System usage patterns
+
+4. License Compliance:
+   - License allocation
+   - Seat utilization
+   - Over-allocated licenses
+   - Compliance score
+   - Cost per seat
+
+5. VM Usage Analytics:
+   - Active VMs
+   - Resource utilization
+   - Performance metrics
+   - Cost analysis
+   - Platform distribution
+
+6. Network Device Inventory:
+   - Discovered devices
+   - Device types
+   - Service catalog
+   - Network topology
+   - Security status
+
+7. Cloud Resource Usage:
+   - Resources by platform
+   - Resource type distribution
+   - Growth trends
+   - Regional usage
+   - Account allocation
+
+8. Approval Compliance:
+   - Active approvals
+   - Expiration tracking
+   - Renewal rates
+   - Compliance percentage
+   - PIC responsibility
+
+Compliance Reports:
+1. Audit Trail Summary:
+   - All user activities
+   - System changes
+   - Data modifications
+   - Admin operations
+   - Security events
+
+   Time Ranges:
+   - Last 24 hours
+   - Last 7 days
+   - Last 30 days
+   - Custom range
+
+2. Security Compliance:
+   - MFA compliance
+   - Password policy compliance
+   - Failed login attempts
+   - Account lockouts
+   - Session violations
+
+3. Change Management:
+   - Configuration changes
+   - User permission changes
+   - Asset modifications
+   - System updates
+   - Database operations
+
+4. Asset Lifecycle:
+   - Acquisition tracking
+   - Deployment history
+   - Maintenance records
+   - Transfer logs
+   - Disposal documentation
+
+5. Regulatory Compliance:
+   - Data encryption status
+   - Access control audit
+   - Backup compliance
+   - Retention compliance
+   - Security assessments
+
+6. Access Control Reports:
+   - User permissions
+   - Role assignments
+   - Permission changes
+   - Admin actions
+   - Privileged access
+
+7. Expiration Monitoring:
+   - Warranty expirations
+   - License expirations
+   - IAM account expirations
+   - VM expirations
+   - Approval expirations
+
+REPORT GENERATION:
+
+Create Report:
+1. Select report type
+2. Choose parameters:
+   - Date range
+   - Filters
+   - Sort order
+   - Grouping
+3. Preview report
+4. Generate report
+5. Export or view
+
+Export Formats:
+- PDF: Print-ready, professional format
+- Excel: Editable spreadsheet with formatting
+- CSV: Raw data for analysis
+- JSON: Structured data export
+
+Report Scheduling:
+- One-time generation
+- Recurring reports (daily, weekly, monthly)
+- Email delivery
+- Auto-save location
+- Report templates
+
+CUSTOM REPORTS:
+
+Report Builder:
+1. Select data source:
+   - Assets
+   - Users
+   - Licenses
+   - VMs
+   - Cloud resources
+   - Custom pages
+
+2. Choose fields:
+   - Select columns
+   - Apply calculations
+   - Set grouping
+   - Define sorting
+
+3. Set filters:
+   - Field-based filters
+   - Date ranges
+   - Status filters
+   - Custom conditions
+
+4. Configure output:
+   - Column order
+   - Display format
+   - Summary rows
+   - Charts/graphs
+
+5. Save template:
+   - Reusable reports
+   - Parameter prompts
+   - Default filters
+   - Schedule options
+
+Report Templates:
+- Predefined layouts
+- Custom branding
+- Header/footer
+- Logo placement
+- Color schemes
+
+DASHBOARD ANALYTICS:
+
+Real-Time Dashboards:
+- Auto-refresh capability
+- Live data updates
+- Interactive widgets
+- Drill-down features
+- Custom layouts
+
+Widget Types:
+1. Status Cards:
+   - Metric display
+   - Icon indicators
+   - Trend arrows
+   - Color coding
+
+2. Charts:
+   - Pie charts (distribution)
+   - Bar charts (comparison)
+   - Line charts (trends)
+   - Area charts (cumulative)
+   - Donut charts (percentage)
+
+3. Tables:
+   - Data grids
+   - Sortable columns
+   - Inline filters
+   - Export options
+
+4. Maps:
+   - Geographic distribution
+   - Location tracking
+   - Regional analysis
+   - Heat maps
+
+5. Gauges:
+   - Progress indicators
+   - Utilization meters
+   - Performance scores
+   - Threshold alerts
+
+Customization:
+- Widget arrangement (drag & drop)
+- Size adjustment
+- Color themes
+- Data refresh rates
+- Default views
+
+ANALYTICS FEATURES:
+
+Trend Analysis:
+- Historical comparisons
+- Growth patterns
+- Seasonal trends
+- Forecasting
+- Anomaly detection
+
+Comparative Analysis:
+- Period-over-period
+- Department comparison
+- Category comparison
+- Year-over-year
+- Platform comparison
+
+Statistical Analysis:
+- Mean, median, mode
+- Standard deviation
+- Percentiles
+- Correlation
+- Distribution
+
+Predictive Analytics:
+- Asset lifecycle prediction
+- Maintenance forecasting
+- Capacity planning
+- Cost projections
+- Resource optimization
+
+--------------------------------------------------------------------------------
+25. IMPORT/EXPORT OPERATIONS
+--------------------------------------------------------------------------------
+
+CSV IMPORT SYSTEM:
+
+Supported Modules:
+✓ Assets
+✓ IT Equipment
+✓ Monitor Inventory
+✓ Azure Inventory
+✓ GCP Inventory
+✓ AWS Inventory
+✓ Approval Monitoring
+✓ Custom Pages (if enabled)
+
+Import Process:
+
+Step 1: Download Template
+- Click "Download Template" button
+- CSV file with correct headers
+- Sample data included (optional)
+- Column descriptions in README
+
+Step 2: Prepare Data
+CSV Format:
+- UTF-8 encoding
+- Comma-separated values
+- Headers in first row
+- Quoted fields for special chars
+- Date format: YYYY-MM-DD
+
+Special Handling:
+- Quoted fields: "value with, comma"
+- Special characters: Supported
+- Empty fields: Allowed (if not required)
+- Column name variations: Auto-normalized
+- Case insensitive headers
+
+Step 3: Upload CSV
+- Click "Import CSV" or "Upload CSV"
+- Select file from computer
+- File size limit: 10MB
+- Progress indicator
+
+Step 4: Validation
+Automatic Checks:
+- File format validation
+- Header matching
+- Required field check
+- Data type validation
+- Duplicate detection
+- Constraint verification
+
+Error Reporting:
+- Row-level errors
+- Column-level errors
+- Error descriptions
+- Suggested fixes
+- Skip or fix options
+
+Step 5: Import Confirmation
+- Preview import data
+- Review record count
+- Check for duplicates
+- Confirm import
+- Progress tracking
+
+Step 6: Completion
+- Success message
+- Records imported count
+- Error summary (if any)
+- View imported data
+- Download error log
+
+IMPORT FEATURES:
+
+Robust CSV Parsing:
+- Handles quoted fields
+- Supports special characters
+- Multiple header formats
+- Column normalization
+- Error recovery
+
+Data Validation:
+- Field type checking
+- Required field enforcement
+- Format validation (email, URL, date)
+- Range validation (numbers)
+- Foreign key verification
+
+Duplicate Handling:
+- Duplicate detection
+- Update existing (option)
+- Skip duplicates (option)
+- Create with suffix (option)
+
+Batch Processing:
+- Large file support
+- Chunked processing
+- Progress indication
+- Background processing
+- Pause/resume capability
+
+CSV EXPORT SYSTEM:
+
+Export Capabilities:
+All Modules Support Export:
+✓ Assets
+✓ Components
+✓ Accessories
+✓ Licenses
+✓ IT Equipment
+✓ Monitor Inventory
+✓ VM Inventory
+✓ IAM Accounts
+✓ Azure Inventory
+✓ GCP Inventory
+✓ AWS Inventory
+✓ Approval Monitoring
+✓ BitLocker Keys (admin only)
+✓ Users
+✓ Activities
+✓ Custom Pages
+
+Export Process:
+
+Step 1: Apply Filters (Optional)
+- Filter data before export
+- Search criteria
+- Status filters
+- Date ranges
+- Department filters
+- Category filters
+
+Step 2: Select Export
+- Click "Export" or "Export CSV" button
+- Choose export options:
+  * All records
+  * Current page
+  * Selected records
+  * Filtered records
+
+Step 3: Generate Export
+Processing:
+- Collect data
+- Apply filters
+- Format columns
+- Generate filename
+- Create CSV
+
+Step 4: Download
+- Automatic download
+- Custom filename format:
+  * [module]-export-YYYY-MM-DD-HHMMSS.csv
+  * Example: assets-export-2025-01-15-143025.csv
+  * Includes active filters in name
+
+EXPORT FEATURES:
+
+Automatic Filename:
+Format: [module]-[filters]-[timestamp].csv
+Examples:
+- assets-export-2025-01-15.csv
+- assets-status-deployed-2025-01-15.csv
+- azure-active-resources-2025-01-15.csv
+
+Includes filter info:
+- Status values
+- Date ranges
+- Category names
+- Department names
+- Platform names
+
+Field Selection:
+- All fields (default)
+- Custom field selection
+- Essential fields only
+- Export templates
+- Column reordering
+
+Data Formatting:
+- Proper CSV escaping
+- Quoted special chars
+- Date formatting
+- Number formatting
+- Boolean representation
+
+BULK OPERATIONS:
+
+Mass Import:
+- Import thousands of records
+- Batch validation
+- Error handling
+- Rollback on failure
+- Transaction support
+
+Mass Update:
+- Update multiple records
+- CSV-based updates
+- Match by key field
+- Selective field update
+- Audit trail
+
+Mass Delete:
+- Delete by criteria
+- CSV-based deletion
+- Confirmation required
+- Soft delete option
+- Recovery support
+
+DATA MIGRATION:
+
+Complete System Export:
+- All modules data
+- Configuration export
+- User permissions
+- System settings
+- Backup format
+
+Complete System Import:
+- Full restoration
+- Data validation
+- Relationship preservation
+- Configuration restore
+- User recreation
+
+Migration Tools:
+- From other systems
+- Data transformation
+- Field mapping
+- Validation rules
+- Error handling
+
+--------------------------------------------------------------------------------
+26. ACTIVITY TRACKING & AUDIT LOGS
+--------------------------------------------------------------------------------
+
+COMPREHENSIVE ACTIVITY LOGGING:
+
+Logged Activities:
+
+User Authentication:
+- Login events (success/failure)
+- Logout events
+- MFA verification
+- Password changes
+- Password reset requests
+- Account lockouts
+- Session timeouts
+
+Asset Operations:
+- Asset creation
+- Asset updates (field-level)
+- Asset deletion
+- Checkout operations
+- Checkin operations
+- Status changes
+- Assignment changes
+
+Data Modifications:
+- Record creation (all modules)
+- Record updates (before/after values)
+- Record deletion
+- Bulk operations
+- Import operations
+- Export operations
+
+Permission Changes:
+- User permission updates
+- Role assignments
+- Admin status changes
+- MFA status changes
+- Access level modifications
+
+Search & Export:
+- Search queries
+- Filter applications
+- Export operations
+- Report generation
+- Data downloads
+
+System Operations:
+- Configuration changes
+- Database operations
+- Backup creation
+- Restore operations
+- System maintenance
+
+Cloud Operations:
+- Azure resource changes
+- GCP resource changes
+- AWS resource changes
+- Approval monitoring changes
+- Historical updates
+
+Custom Page Operations:
+- Page creation
+- Column additions
+- Data modifications
+- Page deletions
+
+ACTIVITY LOG FEATURES:
+
+Log Details:
+For Each Activity:
+- Unique Activity ID
+- Timestamp (precise to millisecond)
+- User identification (username, ID)
+- User IP address
+- Session ID
+- Action type (create, update, delete, etc.)
+- Module/Entity affected
+- Record ID
+- Before values (for updates)
+- After values (for updates)
+- Success/Failure status
+- Error message (if failed)
+- Browser/User agent
+- Geographic location (if available)
+
+Activity Types:
+- user.login
+- user.logout
+- user.password_change
+- asset.create
+- asset.update
+- asset.delete
+- asset.checkout
+- asset.checkin
+- permission.update
+- system.config_change
+- database.backup
+- export.csv
+- import.csv
+- report.generate
+
+VIEWING ACTIVITY LOGS:
+
+Access Logs:
+Navigation: User Management → Activities
+OR
+Navigation: Admin → System Logs → Activity Logs
+
+Filter Options:
+- User: Filter by specific user
+- Date Range: From-To dates
+- Action Type: Specific actions
+- Module: Filter by module
+- Entity ID: Specific record
+- Success/Failure: Filter by status
+- IP Address: Filter by IP
+- Session: Filter by session ID
+
+Search:
+- Keyword search
+- Full-text search
+- Advanced query
+- Regular expressions
+
+Display Options:
+- Records per page: 10-100
+- Sort by: Date, User, Action, Module
+- Columns: Show/Hide columns
+- Grouping: By user, date, module
+
+Export Logs:
+- CSV export
+- JSON export
+- Filtered export
+- Date range export
+- Custom field selection
+
+AUDIT TRAIL:
+
+Immutable Logs:
+- Cannot be modified
+- Cannot be deleted (except by retention policy)
+- Timestamped permanently
+- Cryptographic hashing (optional)
+- Digital signatures (optional)
+
+Data Retention:
+- Activity Logs: 1 year (default)
+- Security Logs: 1 year (mandatory)
+- System Logs: 90 days
+- Error Logs: 90 days
+- Auth Logs: 1 year
+
+Compliance Features:
+- GDPR compliance support
+- HIPAA audit trail
+- SOX compliance
+- ISO 27001 support
+- Regulatory reporting
+
+SECURITY AUDITING:
+
+Security Events:
+- Failed login attempts
+- Account lockouts
+- MFA failures
+- Permission escalation
+- Unauthorized access attempts
+- Suspicious activity
+- Data export (sensitive)
+- Configuration changes
+- Admin actions
+- Database operations
+
+Alert Triggers:
+- Multiple failed logins (5 in 10 min)
+- Admin action after hours
+- Bulk data export
+- Permission changes
+- User deletion
+- Database restore
+- System configuration
+- Encryption changes
+
+Incident Response:
+- Real-time alerts
+- Email notifications
+- In-app notifications
+- Escalation procedures
+- Automated responses
+- Investigation tools
+
+ADVANCED FEATURES:
+
+Real-Time Activity Feed:
+- Live activity stream
+- Auto-refresh
+- Recent activities
+- User-specific view
+- Department view
+- System-wide view
+
+Activity Analytics:
+- Most active users
+- Common operations
+- Peak usage times
+- Module usage stats
+- Error patterns
+- Trend analysis
+
+Change History:
+- Field-level tracking
+- Before/after comparison
+- Change timeline
+- User attribution
+- Rollback capability (selective)
+
+Forensic Tools:
+- Session reconstruction
+- User journey tracking
+- Access patterns
+- Anomaly detection
+- Correlation analysis
+
+REPORTING:
+
+Activity Reports:
+- User activity summary
+- Daily activity report
+- Weekly summary
+- Monthly summary
+- Custom period reports
+
+Compliance Reports:
+- Audit trail report
+- Access control report
+- Change management report
+- Security incident report
+- Regulatory compliance report
+
+Scheduled Reports:
+- Automated generation
+- Email delivery
+- Report templates
+- Custom recipients
+- Archive storage
+
+INTEGRATION:
+
+SIEM Integration:
+- Syslog export
+- CEF format
+- JSON export
+- Real-time streaming
+- API access
+
+Log Aggregation:
+- Centralized logging
+- Log forwarding
+- External storage
+- Long-term archival
+- Cross-system correlation
+
+Third-Party Tools:
+- Splunk integration
+- ELK stack support
+- Grafana dashboards
+- Custom integrations
+
+--------------------------------------------------------------------------------
+27. SYSTEM MAINTENANCE & OPTIMIZATION
+--------------------------------------------------------------------------------
+
+AUTOMATED MAINTENANCE:
+
+Daily Tasks (Automatic):
+1. Database Backup (2:00 AM):
+   - Full database backup
+   - Integrity verification
+   - Compress backup file
+   - Email notification
+   - Cleanup old backups (>30 days)
+
+2. Expiration Checks (Startup + Every 24h):
+   - IAM account expiration
+   - VM expiration
+   - Warranty expiration
+   - License expiration
+   - Approval expiration
+   - Send email notifications
+   - Update statuses
+
+3. Log Rotation (1:00 AM):
+   - Create new daily log files
+   - Compress old logs
+   - Archive logs >30 days
+   - Delete logs >retention period
+
+4. Session Cleanup (Every hour):
+   - Remove expired sessions
+   - Clear inactive sessions
+   - Update session statistics
+   - Free memory
+
+5. Cache Cleanup (3:00 AM):
+   - Clear expired cache
+   - Optimize cache size
+   - Update cache statistics
+   - Refresh critical cache
+
+Weekly Tasks (Automatic):
+1. Database Optimization (Sunday 3:00 AM):
+   Duration: 15-30 minutes
+   Operations:
+   - Rebuild indexes
+   - Update statistics
+   - Analyze query patterns
+   - VACUUM (PostgreSQL)
+   - Optimize tables
+   - Defragment data
+
+2. Performance Analysis:
+   - Slow query identification
+   - Resource usage analysis
+   - Bottleneck detection
+   - Optimization recommendations
+
+3. Old Log Cleanup:
+   - Archive old logs
+   - Compress archived logs
+   - Delete expired logs
+   - Free disk space
+
+4. Security Scan:
+   - Check for vulnerabilities
+   - Verify encryption status
+   - Audit user permissions
+   - Review failed logins
+   - Check for anomalies
+
+Monthly Tasks (Automatic):
+1. Comprehensive Backup:
+   - Full system backup
+   - Configuration backup
+   - User data backup
+   - Report generation
+   - Offsite backup (if configured)
+
+2. Security Audit:
+   - Permission review
+   - User access audit
+   - MFA compliance check
+   - Password policy check
+   - Activity pattern analysis
+
+3. Capacity Planning:
+   - Storage utilization
+   - Database growth
+   - User growth
+   - Performance trends
+   - Resource forecasting
+
+4. System Updates Check:
+   - Check for updates
+   - Security patches
+   - Feature updates
+   - Dependency updates
+   - Compatibility check
+
+MANUAL MAINTENANCE:
+
+Database Operations:
+Access: Administration → Database
+
+1. Manual Backup:
+   - Create on-demand backup
+   - Add description/notes
+   - Download backup file
+   - Verify integrity
+
+2. Database Optimization:
+   - Click "Optimize Database"
+   - Select tables (or all)
+   - Run optimization
+   - View results
+   - Performance improvement
+
+3. Index Rebuild:
+   - Select specific indexes
+   - Rebuild all indexes
+   - Verify performance
+   - Monitor progress
+
+4. Table Maintenance:
+   - Analyze tables
+   - Vacuum tables (PostgreSQL)
+   - Update statistics
+   - Check integrity
+
+System Optimization:
+1. Clear Cache:
+   - Application cache
+   - Query cache
+   - Session cache
+   - Browser cache
+
+2. Cleanup Temporary Files:
+   - Temp uploads
+   - Temp exports
+   - Session files
+   - Old imports
+
+3. Optimize Assets:
+   - Compress images
+   - Minify CSS/JS (if applicable)
+   - Clean up old files
+   - Verify links
+
+4. Performance Tuning:
+   - Adjust cache settings
+   - Optimize queries
+   - Configure connection pool
+   - Tune memory usage
+
+PERFORMANCE MONITORING:
+
+Metrics Tracked:
+System Performance:
+- CPU utilization
+- Memory usage
+- Disk I/O
+- Network bandwidth
+- Response times
+- Throughput
+
+Database Performance:
+- Query execution time
+- Connection pool usage
+- Cache hit ratio
+- Index efficiency
+- Table scan ratio
+- Lock wait time
+
+Application Performance:
+- Page load time
+- API response time
+- Concurrent users
+- Request queue
+- Error rate
+- Success rate
+
+Performance Dashboard:
+Real-Time Metrics:
+- Current CPU/Memory usage
+- Active database connections
+- Current user sessions
+- Request rate
+- Error rate
+- Response time
+
+Historical Data:
+- Performance trends
+- Usage patterns
+- Peak times
+- Bottleneck identification
+- Capacity planning
+
+Alerts:
+- High CPU usage (>80%)
+- High memory usage (>85%)
+- Disk space low (<10%)
+- Slow queries (>5s)
+- Error spike (>10/min)
+- Connection pool exhausted
+
+HEALTH CHECKS:
+
+System Health:
+Automatic Checks:
+1. Database Connection:
+   - Test connection
+   - Verify credentials
+   - Check pool status
+   - Latency check
+
+2. Email Service:
+   - SMTP connection
+   - Send test email
+   - Verify delivery
+   - Queue status
+
+3. External Services:
+   - Zabbix API (if configured)
+   - Jira API (if configured)
+   - Other integrations
+   - Network connectivity
+
+4. File System:
+   - Disk space
+   - Write permissions
+   - Backup location
+   - Log location
+
+5. Security:
+   - Encryption status
+   - Certificate validity (SSL)
+   - Session security
+   - Password policies
+
+Health Dashboard:
+- Overall system health
+- Component status (green/yellow/red)
+- Recent issues
+- Resolution suggestions
+- Maintenance schedule
+
+BACKUP STRATEGY:
+
+Backup Types:
+1. Full Backup (Daily):
+   - Complete database dump
+   - All tables and data
+   - Schema included
+   - Compressed format
+   - 30-day retention
+
+2. Incremental Backup (Optional):
+   - Changed data only
+   - Faster backup
+   - Less storage
+   - Requires full backup base
+
+3. Configuration Backup (Weekly):
+   - System settings
+   - User permissions
+   - Email templates
+   - Custom configurations
+
+4. File Backup (Monthly):
+   - Uploaded files
+   - Attachments
+   - Reports
+   - Custom documents
+
+Backup Verification:
+- Integrity check
+- Test restore (monthly)
+- Verify file size
+- Check corruption
+- Validate content
+
+Backup Storage:
+- Local storage: /backups/
+- Offsite backup: Optional
+- Cloud storage: Optional
+- Retention policy: 30 days
+- Automatic cleanup
+
+Recovery Procedures:
+Documented for:
+- Database corruption
+- Data loss
+- System failure
+- Security breach
+
+OPTIMIZATION BEST PRACTICES:
+
+Database:
+- Regular index maintenance
+- Query optimization
+- Statistics updates
+- Connection pooling
+- Proper data types
+
+Application:
+- Code optimization
+- Caching strategy
+- Lazy loading
+- Pagination
+- API optimization
+
+Infrastructure:
+- Resource allocation
+- Load balancing (if applicable)
+- CDN usage (if applicable)
+- Network optimization
+- Storage optimization
+
+MAINTENANCE SCHEDULE:
+
+Maintenance Windows:
+Planned Maintenance:
+- Schedule: Sunday 3:00-5:00 AM
+- Frequency: Weekly
+- Duration: 1-2 hours
+- Impact: Minimal
+- Notification: 48 hours advance
+
+Emergency Maintenance:
+- As needed
+- Notification: Immediate
+- Duration: Variable
+- Priority: High
+- Rollback plan: Ready
+
+User Notifications:
+- Email notification
+- In-app banner
+- Status page
+- Estimated downtime
+- Alternative access
+
+Maintenance Checklist:
+Before Maintenance:
+□ Create backup
+□ Notify users
+□ Test in staging
+□ Prepare rollback
+□ Document changes
+
+During Maintenance:
+□ Monitor progress
+□ Check errors
+□ Verify functionality
+□ Test critical features
+□ Document issues
+
+After Maintenance:
+□ Verify system health
+□ Monitor performance
+□ Check logs
+□ Notify completion
+□ Document results
+
+DISASTER RECOVERY:
+
+Recovery Time Objectives (RTO):
+- Critical: 2 hours
+- High: 4 hours
+- Medium: 8 hours
+- Low: 24 hours
+
+Recovery Point Objectives (RPO):
+- Database: 24 hours
+- Files: 7 days
+- Configuration: 7 days
+- Logs: 30 days
+
+Disaster Scenarios:
+1. Hardware Failure:
+   - Deploy to new server
+   - Restore from backup
+   - Verify functionality
+   - Resume operations
+
+2. Data Corruption:
+   - Identify corruption
+   - Restore clean backup
+   - Verify integrity
+   - Import recent changes
+
+3. Security Breach:
+   - Isolate system
+   - Assess damage
+   - Clean and restore
+   - Strengthen security
+   - Resume operations
+
+4. Natural Disaster:
+   - Activate DR site
+   - Restore from offsite backup
+   - Redirect users
+   - Verify operations
+   - Plan return
+
+Backup & Recovery Testing:
+- Monthly restore tests
+- Disaster recovery drills
+- Documentation updates
+- Team training
+- Process refinement
+
+================================================================================
+                    PART VII: SUPPORT & RESOURCES
+================================================================================
+
+--------------------------------------------------------------------------------
+28. HELP & DOCUMENTATION
+--------------------------------------------------------------------------------
+
+BUILT-IN DOCUMENTATION:
+
+User Manual:
+Access: Help → User Manual
+URL: /user-manual
+Format: Interactive HTML
+
+Contents:
+- Getting Started Guide
+- Feature Overview
+- Module Tutorials
+- Step-by-step Guides
+- Screenshots
+- Video Tutorials (if available)
+- FAQs
+- Best Practices
+
+Admin Guide:
+Access: /admin-confluence-guide.html
+Audience: Administrators
+
+Contents:
+- System Architecture
+- Installation Guide
+- Configuration Guide
+- Security Setup
+- Backup & Recovery
+- Troubleshooting
+- Maintenance Procedures
+- Advanced Features
+
+Confluence User Guide:
+Access: /confluence-user-guide.html
+Format: Comprehensive HTML
+
+Contents:
+- System Overview
+- Module Documentation
+- Operational Procedures
+- Integration Guides
+- Compliance Information
+- Support Resources
+
+CONTEXT-SENSITIVE HELP:
+
+In-App Help:
+- Tooltips on hover
+- Info icons (ℹ️) beside fields
+- Help text under inputs
+- Expandable help sections
+- Quick tips
+
+Field-Level Help:
+- Input validation messages
+- Format examples
+- Required field indicators
+- Character limits
+- Data type hints
+
+Page-Level Help:
+- Page descriptions
+- Feature overviews
+- Common tasks guide
+- Related resources
+- Support contact
+
+INTERACTIVE TUTORIALS:
+
+Guided Tours:
+- First-time user tour
+- Feature highlights
+- Module walkthroughs
+- Best practices tour
+- Advanced features tour
+
+Step-by-Step Guides:
+Module Guides:
+- Asset Management
+- User Administration
+- Cloud Management
+- Monitoring Setup
+- Reporting
+
+Task Guides:
+- How to add an asset
+- How to checkout an asset
+- How to configure email
+- How to create backups
+- How to manage permissions
+
+VIDEO TUTORIALS (If Available):
+- Getting Started (5 min)
+- Asset Management (10 min)
+- User Permissions (8 min)
+- Cloud Integration (12 min)
+- Reporting & Analytics (15 min)
+- Advanced Features (20 min)
+
+KNOWLEDGE BASE:
+
+Articles & Guides:
+Categories:
+- Getting Started
+- Assets & Inventory
+- Cloud Management
+- User Management
+- Monitoring & Discovery
+- Administration
+- Security & Compliance
+- Troubleshooting
+- Best Practices
+
+Article Format:
+- Clear titles
+- Step-by-step instructions
+- Screenshots
+- Code examples
+- Tips & warnings
+- Related articles
+- Last updated date
+
+Search Functionality:
+- Full-text search
+- Category filtering
+- Tag-based search
+- Recent articles
+- Popular articles
+- Recommended articles
+
+FAQ SECTION:
+
+Common Questions:
+General:
+- What is SRPH-MIS?
+- How do I get started?
+- What are the system requirements?
+- How do I request access?
+- How do I reset my password?
+
+Assets:
+- How do I add an asset?
+- How do I checkout an asset?
+- How do I import assets from CSV?
+- How do I track warranties?
+- How do I generate asset reports?
+
+Cloud:
+- How do I add cloud resources?
+- How do I import Azure inventory?
+- How do I track cloud costs?
+- How do I monitor approvals?
+
+Administration:
+- How do I create users?
+- How do I assign permissions?
+- How do I configure email?
+- How do I backup the database?
+- How do I enable encryption?
+
+Troubleshooting:
+- Why can't I login?
+- Why are emails not sending?
+- How do I unlock a user account?
+- What if I forgot my MFA device?
+- How do I restore from backup?
+
+CHATBOT ASSISTANT:
+
+AI Help Assistant:
+Access: Chat icon (bottom-right)
+
+Capabilities:
+- Answer common questions
+- Guide through features
+- Provide step-by-step help
+- Search documentation
+- Link to relevant guides
+- Escalate to support
+
+Knowledge Areas:
+- System features
+- Module operations
+- Configuration
+- Troubleshooting
+- Best practices
+- Security
+- Reporting
+
+Usage Tips:
+- Ask in natural language
+- Be specific
+- Provide context
+- Follow suggestions
+- Rate responses
+- Request human support
+
+SUPPORT RESOURCES:
+
+Help Menu:
+Navigation: Click "?" icon or Help menu
+
+Options:
+- User Manual
+- Admin Guide
+- Video Tutorials
+- FAQ
+- Knowledge Base
+- Chat Support
+- Report an Issue
+- Contact Support
+- System Status
+- Release Notes
+
+Quick Reference:
+- Keyboard shortcuts
+- Common tasks
+- Module overview
+- Permission matrix
+- API documentation
+- Integration guides
+
+Release Notes:
+- Version history
+- New features
+- Bug fixes
+- Known issues
+- Upgrade guide
+- Breaking changes
+
+ACCESSIBILITY:
+
+Documentation Accessibility:
+- Screen reader compatible
+- Keyboard navigation
+- High contrast mode
+- Adjustable font sizes
+- Alternative text for images
+- Closed captions (videos)
+
+Language Support:
+- English (primary)
+- Multiple language support (if available)
+- Translation tools
+- Localization guides
+
+--------------------------------------------------------------------------------
+29. TROUBLESHOOTING GUIDE
+--------------------------------------------------------------------------------
+
+COMMON ISSUES & SOLUTIONS:
+
+AUTHENTICATION ISSUES:
+
+1. Cannot Login:
+   Symptoms:
+   - Invalid credentials error
+   - Login button not responding
+   - Redirect loop
+
+   Solutions:
+   A. Verify credentials:
+      - Check username spelling
+      - Verify caps lock is off
+      - Ensure correct password
+      - Try password reset
+
+   B. Clear browser data:
+      - Clear cookies
+      - Clear cache
+      - Try incognito/private mode
+      - Try different browser
+
+   C. Check account status:
+      - Account may be locked
+      - Account may be inactive
+      - Contact administrator
+
+   D. System issues:
+      - Check server status
+      - Verify database connection
+      - Check logs for errors
+
+2. Account Locked:
+   Symptoms:
+   - "Account locked" message
+   - Cannot login after multiple attempts
+
+   Solutions:
+   - Wait for lockout duration (default: 30 min)
+   - Contact administrator to unlock
+   - Admin: User Management → Unlock Account
+   - Check for suspicious activity
+
+3. MFA Issues:
+   Symptoms:
+   - MFA code not accepted
+   - Cannot scan QR code
+   - Lost MFA device
+
+   Solutions:
+   A. Code not working:
+      - Verify device time is correct
+      - Try next code (wait 30 seconds)
+      - Check for typos
+
+   B. QR code issues:
+      - Use manual entry code
+      - Try different authenticator app
+      - Refresh setup page
+
+   C. Lost device:
+      - Contact administrator
+      - Admin can disable MFA temporarily
+      - Re-setup MFA on new device
+      - Use backup codes (if available)
+
+4. Session Expires Quickly:
+   Symptoms:
+   - Frequent logout prompts
+   - "Session expired" messages
+
+   Solutions:
+   - Check timeout settings (Admin → System Setup)
+   - Verify cookies are enabled
+   - Avoid opening multiple tabs
+   - Request timeout adjustment
+   - Check browser settings
+
+DATABASE ISSUES:
+
+1. Connection Failed:
+   Symptoms:
+   - "Failed to connect to database"
+   - Application won't start
+   - Timeout errors
+
+   Solutions:
+   A. Verify DATABASE_URL:
+      - Check environment variables
+      - Verify connection string format
+      - Check credentials
+
+   B. PostgreSQL:
+      - Ensure PostgreSQL is running
+      - Check port availability (5432)
+      - Verify firewall settings
+      - Test connection manually
+
+   C. Replit Database:
+      - Check Replit Database tab
+      - Verify database is active
+      - Re-copy connection string
+      - Restart application
+
+   D. Network:
+      - Check internet connection
+      - Verify firewall rules
+      - Test database host reachability
+
+2. Slow Performance:
+   Symptoms:
+   - Slow page loads
+   - Query timeouts
+   - High response times
+
+   Solutions:
+   - Run database optimization (Admin → Database)
+   - Rebuild indexes
+   - Update statistics
+   - Check for large tables
+   - Enable pagination
+   - Optimize queries
+   - Clear cache
+   - Restart application
+
+3. Data Not Saving:
+   Symptoms:
+   - Changes don't persist
+   - Error on save
+   - Validation errors
+
+   Solutions:
+   - Check required fields
+   - Verify field formats
+   - Check permissions
+   - Review error messages
+   - Check browser console
+   - Verify database connection
+   - Check disk space
+
+EMAIL ISSUES:
+
+1. Emails Not Sending:
+   Symptoms:
+   - No email notifications
+   - SMTP errors in logs
+   - Test email fails
+
+   Solutions:
+   A. Verify SMTP config:
+      - Admin → System Setup → Email
+      - Check server address
+      - Verify port number
+      - Check credentials
+      - Test connection
+
+   B. Gmail/Google:
+      - Enable "Less secure app access" OR
+      - Use App Passwords (2FA)
+      - Check account settings
+
+   C. Office 365:
+      - Verify modern auth
+      - Check MFA settings
+      - Use correct port (587)
+
+   D. General:
+      - Check firewall
+      - Verify internet connection
+      - Check email logs
+      - Try different SMTP provider
+
+2. Emails in Spam:
+   Symptoms:
+   - Emails delivered to spam folder
+   - Recipients not receiving emails
+
+   Solutions:
+   - Configure SPF records
+   - Set up DKIM signing
+   - Configure DMARC policy
+   - Use verified sending domain
+   - Avoid spam trigger words
+   - Check email content
+   - Verify sender reputation
+
+3. Email Queue Stuck:
+   Symptoms:
+   - Emails not delivered
+   - Queue growing
+   - Processing errors
+
+   Solutions:
+   - Check system logs
+   - Verify SMTP connection
+   - Clear email queue
+   - Restart application
+   - Check for errors
+   - Re-queue failed emails
+
+ENCRYPTION ISSUES:
+
+1. Encryption Failed:
+   Symptoms:
+   - "Failed to encrypt data"
+   - Encryption errors in logs
+
+   Solutions:
+   - Verify ENCRYPTION_KEY is set
+   - Check key length (32+ chars)
+   - Restart application
+   - Re-set encryption key
+   - Check logs for details
+
+2. Cannot Decrypt Data:
+   Symptoms:
+   - "Failed to decrypt data"
+   - Garbled text
+   - Decryption errors
+
+   Solutions:
+   - Verify correct ENCRYPTION_KEY
+   - Check if data was encrypted
+   - Restore original key
+   - Contact administrator
+   - Check encryption status
+
+3. Lost Encryption Key:
+   ⚠️ CRITICAL ISSUE
+
+   Solutions:
+   - Check key backup
+   - Verify Replit Secrets
+   - Check documentation
+   - If no backup: DATA IS LOST
+   - Restore from unencrypted backup
+   - Re-encrypt with new key
+
+IMPORT/EXPORT ISSUES:
+
+1. CSV Import Fails:
+   Symptoms:
+   - Import errors
+   - Validation failures
+   - Partial imports
+
+   Solutions:
+   - Download correct template
+   - Verify CSV format
+   - Check UTF-8 encoding
+   - Verify required fields
+   - Check data types
+   - Review error messages
+   - Fix data and retry
+
+2. Export Not Working:
+   Symptoms:
+   - Export button doesn't work
+   - Empty export file
+   - Download fails
+
+   Solutions:
+   - Check browser popup blocker
+   - Try different browser
+   - Clear browser cache
+   - Check permissions
+   - Verify data exists
+   - Check logs for errors
+
+PERFORMANCE ISSUES:
+
+1. Slow Page Load:
+   Symptoms:
+   - Pages take long to load
+   - Timeout errors
+   - Unresponsive interface
+
+   Solutions:
+   - Clear browser cache
+   - Close unnecessary tabs
+   - Check internet speed
+   - Optimize database (Admin)
+   - Enable pagination
+   - Reduce page size
+   - Restart application
+
+2. High Memory Usage:
+   Symptoms:
+   - System slowing down
+   - Application crashes
+   - Memory warnings
+
+   Solutions:
+   - Restart application
+   - Clear application cache
+   - Optimize queries
+   - Reduce concurrent users
+   - Increase server resources
+   - Check for memory leaks
+   - Review system logs
+
+NETWORK DISCOVERY ISSUES:
+
+1. Scan Not Working:
+   Symptoms:
+   - Scan fails to start
+   - No devices discovered
+   - Timeout errors
+
+   Solutions:
+   - Verify subnet format (CIDR)
+   - Check network access
+   - Verify firewall settings
+   - Reduce scan timeout
+   - Try smaller subnet
+   - Check permissions
+
+2. Incomplete Results:
+   Symptoms:
+   - Missing devices
+   - Partial information
+   - Some ports not scanned
+
+   Solutions:
+   - Increase timeout
+   - Increase retry count
+   - Check network connectivity
+   - Verify port access
+   - Run multiple scans
+
+VM MONITORING ISSUES:
+
+1. Zabbix Connection Failed:
+   Symptoms:
+   - Cannot connect to Zabbix
+   - No monitoring data
+   - API errors
+
+   Solutions:
+   - Verify Zabbix URL
+   - Check API key
+   - Test Zabbix access
+   - Verify network connectivity
+   - Check Zabbix server status
+   - Review permissions
+
+2. No Monitoring Data:
+   Symptoms:
+   - Empty dashboards
+   - No metrics displayed
+   - Sync errors
+
+   Solutions:
+   - Enable auto-sync
+   - Trigger manual sync
+   - Check VM configuration
+   - Verify Zabbix hosts
+   - Review sync logs
+   - Check thresholds
+
+ERROR CODE REFERENCE:
+
+Authentication Errors:
+- AUTH_001: Invalid credentials
+  → Verify username and password
+
+- AUTH_002: Account locked
+  → Wait or contact admin to unlock
+
+- AUTH_003: MFA verification failed
+  → Check code, verify time sync
+
+- AUTH_004: Session expired
+  → Login again
+
+- AUTH_005: Insufficient permissions
+  → Contact admin for access
+
+Database Errors:
+- DB_001: Connection failed
+  → Check DATABASE_URL and connectivity
+
+- DB_002: Query timeout
+  → Optimize query or increase timeout
+
+- DB_003: Constraint violation
+  → Check data integrity
+
+- DB_004: Duplicate entry
+  → Check for existing record
+
+- DB_005: Foreign key violation
+  → Verify related records exist
+
+System Errors:
+- SYS_001: Configuration error
+  → Review system settings
+
+- SYS_002: File not found
+  → Check file path
+
+- SYS_003: Permission denied
+  → Check file/folder permissions
+
+- SYS_004: Service unavailable
+  → Check service status
+
+- SYS_005: Invalid request
+  → Verify request parameters
+
+Email Errors:
+- EMAIL_001: SMTP connection failed
+  → Check SMTP settings
+
+- EMAIL_002: Authentication failed
+  → Verify credentials
+
+- EMAIL_003: Send failed
+  → Check logs for details
+
+- EMAIL_004: Invalid recipient
+  → Verify email address
+
+- EMAIL_005: Queue full
+  → Clear queue or increase limit
+
+GETTING HELP:
+
+Self-Service:
+1. Check documentation
+2. Search knowledge base
+3. Review FAQ
+4. Use chatbot assistant
+5. Check system logs
+
+Contact Support:
+Primary Contact:
+- Name: Nikkel Jimenez
+- Knox ID: jimenez.n
+- Email: (as configured)
+- Department: IT/MIS
+
+Support Channels:
+- In-app chat
+- Email support
+- Help desk ticket
+- Phone support (if available)
+
+When Contacting Support:
+Include:
+- Error message (exact text)
+- Steps to reproduce
+- Screenshots
+- Browser/OS version
+- User account
+- Timestamp of issue
+- Recent changes
+
+Priority Levels:
+1. Critical (2-4 hours):
+   - System down
+   - Data loss
+   - Security breach
+   - Multiple users affected
+
+2. High (8-24 hours):
+   - Major feature broken
+   - Cannot perform tasks
+   - Integration failure
+
+3. Medium (1-3 days):
+   - Minor issues
+   - Enhancement requests
+   - Documentation
+
+4. Low (3-5 days):
+   - Cosmetic issues
+   - Feature suggestions
+   - General questions
+
+--------------------------------------------------------------------------------
+30. API & INTEGRATION CAPABILITIES
+--------------------------------------------------------------------------------
+
+API OVERVIEW:
+
+RESTful API:
+Base URL: /api/v1
+Authentication: Session-based or API key
+Format: JSON
+Methods: GET, POST, PUT, DELETE, PATCH
+
+API Documentation:
+- Swagger/OpenAPI spec
+- Interactive API explorer
+- Code examples
+- Authentication guide
+- Rate limits
+- Error codes
+
+AVAILABLE ENDPOINTS:
+
+Authentication:
+POST   /api/v1/auth/login
+POST   /api/v1/auth/logout
+POST   /api/v1/auth/refresh
+POST   /api/v1/auth/verify-mfa
+GET    /api/v1/auth/session
+
+Assets:
+GET    /api/v1/assets
+GET    /api/v1/assets/:id
+POST   /api/v1/assets
+PUT    /api/v1/assets/:id
+DELETE /api/v1/assets/:id
+POST   /api/v1/assets/checkout
+POST   /api/v1/assets/checkin
+GET    /api/v1/assets/search
+
+Users:
+GET    /api/v1/users
+GET    /api/v1/users/:id
+POST   /api/v1/users
+PUT    /api/v1/users/:id
+DELETE /api/v1/users/:id
+GET    /api/v1/users/:id/permissions
+
+Cloud Resources:
+GET    /api/v1/azure
+POST   /api/v1/azure
+PUT    /api/v1/azure/:id
+DELETE /api/v1/azure/:id
+
+GET    /api/v1/gcp
+POST   /api/v1/gcp
+PUT    /api/v1/gcp/:id
+DELETE /api/v1/gcp/:id
+
+GET    /api/v1/aws
+POST   /api/v1/aws
+PUT    /api/v1/aws/:id
+DELETE /api/v1/aws/:id
+
+VM & Monitoring:
+GET    /api/v1/vms
+GET    /api/v1/vms/:id
+POST   /api/v1/vms
+GET    /api/v1/vms/:id/metrics
+GET    /api/v1/monitoring/zabbix
+
+Reports:
+GET    /api/v1/reports
+POST   /api/v1/reports/generate
+GET    /api/v1/reports/:id
+GET    /api/v1/reports/export
+
+Custom Pages:
+GET    /api/v1/custom/:slug
+POST   /api/v1/custom/:slug
+PUT    /api/v1/custom/:slug/:id
+DELETE /api/v1/custom/:slug/:id
+
+INTEGRATION OPTIONS:
+
+Zabbix Integration:
+- Real-time monitoring
+- Performance metrics
+- Automated alerts
+- API-based sync
+- Custom triggers
+
+Configuration:
+- Zabbix URL
+- API token
+- Sync interval
+- Alert thresholds
+- Host mapping
+
+Jira Integration:
+- Issue tracking
+- Dashboard widgets
+- Automated tickets
+- Status sync
+- Comment sync
+
+Configuration:
+- Jira URL
+- API token
+- Project key
+- Issue types
+- Field mapping
+
+Active Directory/LDAP:
+- User synchronization
+- Group mapping
+- Authentication
+- Auto-provisioning
+- Attribute mapping
+
+Configuration:
+- LDAP server
+- Base DN
+- Bind credentials
+- User mapping
+- Group mapping
+
+Webhook Support:
+Outbound Webhooks:
+- Asset changes
+- User actions
+- System events
+- Custom triggers
+- Retry logic
+
+Inbound Webhooks:
+- Receive data
+- Trigger actions
+- Process updates
+- Authentication
+- Validation
+
+CUSTOM INTEGRATIONS:
+
+SDK/Libraries:
+- JavaScript/TypeScript client
+- Python client (planned)
+- API wrapper classes
+- Helper functions
+- Example code
+
+Integration Patterns:
+- Real-time sync
+- Batch processing
+- Event-driven
+- Scheduled tasks
+- Hybrid approaches
+
+Best Practices:
+- Use API keys
+- Implement retry logic
+- Handle rate limits
+- Validate responses
+- Log API calls
+- Cache when appropriate
+
+SECURITY:
+
+API Authentication:
+- API key authentication
+- Session-based auth
+- OAuth 2.0 (planned)
+- JWT tokens (planned)
+
+Rate Limiting:
+- Requests per minute
+- Requests per hour
+- Burst allowance
+- Throttling
+- IP-based limits
+
+API Security:
+- HTTPS only
+- Input validation
+- SQL injection prevention
+- XSS protection
+- CORS configuration
+- IP whitelisting
+
+================================================================================
+                            CONCLUSION
+================================================================================
+
+SYSTEM CAPABILITIES SUMMARY:
+
+TOTAL FEATURES: 600+
+
+Core Strengths:
+✓ Comprehensive asset management
+✓ Multi-cloud infrastructure tracking
+✓ Real-time monitoring and discovery
+✓ Advanced security and encryption
+✓ Granular permission system
+✓ Extensive reporting and analytics
+✓ Dynamic page builder
+✓ Robust import/export
+✓ Complete audit trails
+✓ Automated notifications
+
+Cloud Platforms Supported:
+✓ Microsoft Azure
+✓ Google Cloud Platform (GCP)
+✓ Amazon Web Services (AWS)
+
+Security Features:
+✓ Two-Factor Authentication (MFA)
+✓ AES-256-GCM Encryption
+✓ Role-Based Access Control
+✓ Complete Activity Logging
+✓ Secure BitLocker Key Storage
+
+Integration Capabilities:
+✓ Zabbix Monitoring
+✓ Jira Integration
+✓ Active Directory/LDAP
+✓ RESTful API
+✓ Webhook Support
+
+GETTING STARTED:
+
+For Users:
+1. Login with provided credentials
+2. Set up MFA (mandatory)
+3. Explore the dashboard
+4. Review user manual
+5. Start managing assets
+
+For Administrators:
+1. Review admin guide
+2. Configure system settings
+3. Set up email notifications
+4. Create user accounts
+5. Configure permissions
+6. Enable encryption
+7. Set up backups
+8. Configure integrations
+
+SUPPORT RESOURCES:
+
+Documentation:
+- User Manual: /user-manual
+- Admin Guide: /admin-confluence-guide.html
+- Confluence Guide: /confluence-user-guide.html
+- This Document: SYSTEM_FEATURES_DOCUMENTATION.txt
+
+Support Contact:
+- Primary: Nikkel Jimenez (jimenez.n)
+- Department: IT/MIS
+- Response Time: Based on priority
+
+Additional Resources:
+- In-app help system
+- Knowledge base
+- FAQ section
+- Video tutorials
+- Interactive chatbot
+
+CONTINUOUS IMPROVEMENT:
+
+This system is continuously evolving with:
+- Regular feature updates
+- Security enhancements
+- Performance optimization
+- Bug fixes
+- User feedback integration
+
+Stay Updated:
+- Check release notes
+- Review system announcements
+- Subscribe to notifications
+- Participate in training
+- Provide feedback
+
+================================================================================
+                    END OF SYSTEM FEATURES DOCUMENTATION
+================================================================================
+
+Document Version: 4.0
+Last Updated: January 2025
+System: SRPH-MIS Inventory Management System
+Environment: Replit & Local Deployment
+
+For the latest updates, feature requests, or support inquiries, please contact
+the IT department or submit a ticket through the system help menu.
+
+Thank you for using SRPH-MIS!
+
+================================================================================

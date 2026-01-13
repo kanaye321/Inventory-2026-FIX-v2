@@ -1,0 +1,6 @@
+[2025-10-09T03:48:19.059Z] [API] {
+  "method": "SYSTEM",
+  "path": "/startup",
+  "statusCode": 200,
+  "timestamp": "2025-10-09T03:48:19.059Z"
+}

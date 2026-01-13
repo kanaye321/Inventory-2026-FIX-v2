@@ -1,0 +1,398 @@
+================================================================================
+                    SRPH-MIS SYSTEM FEATURES LIST
+                         Current System Features
+================================================================================
+
+VERSION: 6.0
+LAST UPDATED: January 2025
+SYSTEM: SRPH-MIS Inventory Management System
+DEPLOYMENT: Localhost / Local Server (Port 5000)
+
+================================================================================
+                              TABLE OF CONTENTS
+================================================================================
+
+PART I: FOUNDATION & CORE FEATURES
+1. System Overview
+2. Authentication & Security
+3. User Interface & Navigation
+4. Dashboard & Analytics
+
+PART II: INVENTORY MANAGEMENT
+5. Asset Management
+6. Component & Accessory Management
+7. License & Software Management
+8. IT Equipment & Monitor Inventory
+
+PART III: CLOUD & INFRASTRUCTURE
+9. Azure Cloud Management
+10. Google Cloud Platform (GCP) Management
+11. Amazon Web Services (AWS) Management
+12. Virtual Machine Management
+13. Approval & Compliance Monitoring
+
+PART IV: MONITORING & DISCOVERY
+14. VM Performance Monitoring (Zabbix)
+15. Network Discovery & Scanning
+16. IAM Account Management
+17. BitLocker Key Management
+
+PART V: ADVANCED ADMINISTRATION
+18. User Management & Permissions
+19. Data Security & Encryption
+20. System Configuration
+21. Email & Notifications
+22. Database Management
+23. Page Builder (Custom Modules)
+
+PART VI: REPORTING & OPERATIONS
+24. Reporting & Analytics
+25. Import/Export Operations
+26. Activity Tracking & Audit Logs
+27. System Maintenance & Optimization
+
+PART VII: SUPPORT & RESOURCES
+28. Help & Documentation
+29. API & Integration Capabilities
+
+================================================================================
+                    PART I: FOUNDATION & CORE FEATURES
+================================================================================
+
+1. SYSTEM OVERVIEW
+- Enterprise inventory and asset management platform
+- React 18+ with TypeScript frontend
+- Node.js with Express.js backend
+- PostgreSQL / In-memory database
+- Port 5000 deployment
+- Multi-cloud infrastructure tracking
+- Real-time monitoring capabilities
+
+2. AUTHENTICATION & SECURITY
+- Username/password authentication
+- Two-Factor Authentication (MFA - mandatory)
+- Microsoft Authenticator integration
+- Session management (120 min timeout)
+- Account lockout protection (5 attempts)
+- Password reset via email
+- AES-256-GCM encryption
+- Role-based access control (RBAC)
+- Activity logging & audit trails
+
+3. USER INTERFACE & NAVIGATION
+- Responsive design (desktop, tablet, mobile)
+- Light/Dark mode toggle
+- 12 color theme options
+- Global search (Ctrl/Cmd + K)
+- Sidebar navigation
+- Breadcrumb navigation
+- Quick action buttons
+- Real-time updates
+- Toast notifications
+
+4. DASHBOARD & ANALYTICS
+- Real-time metrics cards
+- Asset status distribution
+- License management overview
+- Virtual machine statistics
+- Cloud resource summary
+- Network device tracking
+- Activity timeline
+- Visual charts & graphs
+- Quick actions panel
+- Customizable widgets
+
+================================================================================
+                    PART II: INVENTORY MANAGEMENT
+================================================================================
+
+5. ASSET MANAGEMENT
+- Auto-generated asset tags
+- Serial number tracking (encrypted)
+- Network details (IP, MAC, hostname - encrypted)
+- Technical specs (OS, CPU, RAM, storage)
+- Purchase & warranty tracking
+- Status tracking (Available, Deployed, Maintenance, etc.)
+- Checkout/Checkin workflows
+- Knox ID management
+- CSV import/export
+- Advanced search & filtering
+
+6. COMPONENT & ACCESSORY MANAGEMENT
+- RAM, CPU, Storage tracking
+- Graphics cards, Motherboards, PSU
+- Serial numbers & warranties
+- Input devices (keyboards, mice)
+- Display accessories
+- Audio equipment
+- Connectivity devices
+- Condition tracking
+- User assignment
+
+7. LICENSE & SOFTWARE MANAGEMENT
+- Software license tracking
+- License key storage (encrypted)
+- Seat allocation & management
+- Expiration monitoring
+- User assignments
+- Cost tracking
+- Compliance reports
+- Automated expiration alerts (30 days)
+
+8. IT EQUIPMENT & MONITOR INVENTORY
+- Server & networking equipment tracking
+- Serial number tracking (encrypted)
+- Model & specifications
+- Monitor inventory module
+- Screen size & resolution
+- Connectivity tracking
+- Department assignment
+- CSV import/export
+
+================================================================================
+                    PART III: CLOUD & INFRASTRUCTURE
+================================================================================
+
+9. AZURE CLOUD MANAGEMENT
+- Virtual Machines, Storage Accounts
+- App Services, Databases
+- Network Resources, Container Services
+- Resource type tracking
+- Status monitoring
+- Historical change tracking
+- Monthly analytics
+- CSV import/export
+
+10. GOOGLE CLOUD PLATFORM (GCP) MANAGEMENT
+- Compute Engine Instances
+- Cloud Storage Buckets
+- Cloud SQL Databases
+- Kubernetes Engine (GKE)
+- Cloud Functions
+- Project tracking
+- Resource distribution analytics
+- CSV import/export
+
+11. AMAZON WEB SERVICES (AWS) MANAGEMENT
+- EC2 Instances, S3 Buckets
+- RDS Databases, Lambda Functions
+- ECS/EKS Containers
+- Regional distribution
+- Service type tracking
+- Historical analytics
+- CSV import/export
+
+12. VIRTUAL MACHINE MANAGEMENT
+- VM inventory tracking
+- Resource allocation (CPU, RAM, Storage)
+- Network information (encrypted)
+- Lifecycle management (start/end dates)
+- Approval tracking
+- Status automation (Active, Overdue, Decommissioned)
+- Email notifications
+
+13. APPROVAL & COMPLIANCE MONITORING
+- Type classification (Server, Application, Database, etc.)
+- Platform tracking (AWS, Azure, GCP, On-premise)
+- PIC & department management
+- Approval number tracking
+- Expiration monitoring
+- Automated status updates
+- CSV import/export
+
+================================================================================
+                    PART IV: MONITORING & DISCOVERY
+================================================================================
+
+14. VM PERFORMANCE MONITORING (ZABBIX)
+- Real-time VM monitoring
+- Zabbix API integration
+- CPU, Memory, Disk metrics
+- Performance threshold alerts
+- Dashboard widgets
+- Automated data synchronization
+
+15. NETWORK DISCOVERY & SCANNING
+- IP address scanning
+- Hostname resolution
+- Port scanning
+- Service detection
+- MAC address discovery
+- CIDR notation support
+- DNS configuration
+- Scheduled scans
+
+16. IAM ACCOUNT MANAGEMENT
+- Cloud platform IAM tracking
+- Permission type tracking
+- Approval management
+- Expiration monitoring
+- Status automation
+- Email notifications
+
+17. BITLOCKER KEY MANAGEMENT
+- Recovery key storage (encrypted)
+- Device identifier tracking
+- Admin-only access
+- Complete audit trail
+- AES-256-GCM encryption
+
+================================================================================
+                    PART V: ADVANCED ADMINISTRATION
+================================================================================
+
+18. USER MANAGEMENT & PERMISSIONS
+- User roles (Admin, Asset Manager, Department User, Read-Only)
+- Granular permissions (View/Edit/Add/Delete per module)
+- Department assignment
+- Account activation/deactivation
+- Bulk user import (CSV)
+- MFA management
+- Password management
+
+19. DATA SECURITY & ENCRYPTION
+- AES-256-GCM encryption
+- Field-level encryption
+- Encrypted fields (PII, serial numbers, network info)
+- Encryption key management
+- Emergency decryption
+- Backward compatibility
+
+20. SYSTEM CONFIGURATION
+- Site settings & company information
+- Email configuration (SMTP)
+- Asset tag configuration
+- Password policy
+- Session timeout settings
+- Notification preferences
+
+21. EMAIL & NOTIFICATIONS
+- Asset checkout/checkin notifications
+- Warranty expiration alerts
+- License expiration alerts
+- VM expiration notifications
+- Approval expiration alerts
+- System maintenance notifications
+- SMTP configuration
+- Email templates
+
+22. DATABASE MANAGEMENT
+- PostgreSQL support
+- In-memory storage option
+- Manual & automated backups
+- Database optimization
+- Performance monitoring
+- Backup restoration
+
+23. PAGE BUILDER (CUSTOM MODULES)
+- Dynamic page creation
+- Custom database tables
+- Column configuration
+- Auto CRUD operations
+- CSV import/export templates
+- No-code solution
+
+================================================================================
+                    PART VI: REPORTING & OPERATIONS
+================================================================================
+
+24. REPORTING & ANALYTICS
+- Asset Inventory Reports
+- Asset Utilization Reports
+- License Compliance Reports
+- VM Usage Analytics
+- Approval Compliance Reports
+- Audit Trail Reports
+- Export formats (PDF, Excel, CSV, JSON)
+- Dashboard widgets
+- Real-time metrics
+- Trend analysis
+
+25. IMPORT/EXPORT OPERATIONS
+- CSV import for all modules
+- Template download
+- Data validation
+- Bulk operations
+- CSV export with filters
+- Automatic filename generation
+
+26. ACTIVITY TRACKING & AUDIT LOGS
+- User authentication logging
+- Asset operation tracking
+- Data modification logging
+- Permission change tracking
+- Immutable audit logs
+- Real-time activity feed
+
+27. SYSTEM MAINTENANCE & OPTIMIZATION
+- Daily database backups (2:00 AM)
+- Weekly optimization (Sunday 3:00 AM)
+- Log rotation
+- Session cleanup
+- Performance monitoring
+- Health checks
+
+================================================================================
+                    PART VII: SUPPORT & RESOURCES
+================================================================================
+
+28. HELP & DOCUMENTATION
+- User Manual (/user-manual)
+- Admin Guide (/admin-confluence-guide.html)
+- Confluence User Guide (/confluence-user-guide.html)
+- Context-sensitive help
+- Interactive tutorials
+- FAQ section
+- Chatbot assistant
+
+29. API & INTEGRATION CAPABILITIES
+- RESTful API
+- Zabbix integration
+- JIRA integration
+- Active Directory/LDAP
+- Webhook support
+- API authentication
+
+================================================================================
+                            FEATURE SUMMARY
+================================================================================
+
+CORE STRENGTHS:
+✓ Comprehensive asset management
+✓ Multi-cloud infrastructure tracking (Azure, GCP, AWS)
+✓ Real-time monitoring and discovery
+✓ Advanced security and encryption
+✓ Granular permission system
+✓ Extensive reporting and analytics
+✓ Dynamic page builder
+✓ Robust import/export
+✓ Complete audit trails
+✓ Automated notifications
+
+SECURITY FEATURES:
+✓ Two-Factor Authentication (MFA)
+✓ AES-256-GCM Encryption
+✓ Role-Based Access Control
+✓ Complete Activity Logging
+✓ Secure BitLocker Key Storage
+
+INTEGRATION CAPABILITIES:
+✓ Zabbix Monitoring
+✓ Jira Integration
+✓ Active Directory/LDAP
+✓ RESTful API
+✓ Webhook Support
+
+================================================================================
+                    END OF SYSTEM FEATURES LIST
+================================================================================
+
+Document Version: 6.0
+Last Updated: January 2025
+System: SRPH-MIS Inventory Management System
+Environment: Localhost / Local Server (Port 5000)
+
+For support: Contact IT/MIS Department
+Primary Contact: Nikkel Jimenez (jimenez.n)
+
+================================================================================

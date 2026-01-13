@@ -1,0 +1,930 @@
+
+================================================================================
+                    SRPH-MIS COMPLETE ADMINISTRATOR GUIDE
+           Inventory Management System - Setup to Operations Manual
+================================================================================
+
+TABLE OF CONTENTS
+1. System Overview
+2. Prerequisites & Requirements
+3. Initial Setup & Installation
+4. Database Configuration
+5. User Management & Permissions
+6. System Configuration
+7. Security Features (MFA & Encryption)
+8. Daily Operations
+9. Monitoring & Discovery
+10. Backup & Recovery
+11. Troubleshooting
+12. Maintenance Tasks
+
+================================================================================
+1. SYSTEM OVERVIEW
+================================================================================
+
+SRPH-MIS is an enterprise inventory management system designed for the School 
+of Public Health. It provides:
+
+- Asset Management (Hardware inventory)
+- Component & Accessory Tracking
+- Software License Management
+- Virtual Machine Monitoring (Zabbix integration)
+- Network Discovery Tools
+- IAM Account Management
+- BitLocker Key Storage
+- User & Permission Management
+- Automated Email Notifications
+- Data Encryption (AES-256-GCM)
+
+System Architecture:
+- Frontend: React + TypeScript + Tailwind CSS
+- Backend: Express.js + Node.js
+- Database: PostgreSQL (or in-memory storage)
+- Port: 5000 (default configuration)
+
+================================================================================
+2. PREREQUISITES & REQUIREMENTS
+================================================================================
+
+REQUIRED:
+✓ Node.js 18+ or 20+ installed
+✓ Modern web browser (Chrome, Firefox, Edge)
+✓ Administrative access to server/system
+✓ Port 5000 available
+
+OPTIONAL:
+□ PostgreSQL database (for persistent storage)
+□ SMTP server access (for email notifications)
+□ Zabbix monitoring server (for VM monitoring)
+
+MINIMUM SYSTEM REQUIREMENTS:
+- 2GB RAM (4GB recommended)
+- 10GB available disk space
+- Stable internet connection
+
+================================================================================
+3. INITIAL SETUP & INSTALLATION
+================================================================================
+
+STEP 1: CLONE/DOWNLOAD THE APPLICATION
+--------------------------------------
+Local deployment:
+1. Extract or clone the application files
+2. Navigate to application directory:
+   cd /path/to/application
+3. Install dependencies:
+   npm install
+
+STEP 2: CONFIGURE ENVIRONMENT VARIABLES
+---------------------------------------
+Create a .env file in the root directory:
+
+DATABASE_URL=postgresql://user:password@host:port/database
+SESSION_SECRET=your-super-secure-random-string
+NODE_ENV=production
+PORT=5000
+ENCRYPTION_KEY=your-32-character-encryption-key
+
+IMPORTANT NOTES:
+- SESSION_SECRET: Generate a random 32+ character string
+- ENCRYPTION_KEY: Add to .env file or system environment variables
+- Database URL: Optional, system uses in-memory storage by default
+
+STEP 3: START THE APPLICATION
+-----------------------------
+Development mode:
+npm run dev
+
+Production mode:
+npm start
+
+The application will be accessible at:
+http://0.0.0.0:5000 or http://localhost:5000
+
+STEP 4: INITIAL LOGIN
+--------------------
+Default Administrator Account:
+Username: admin
+Password: admin123
+
+⚠️ CRITICAL: Change this password immediately after first login!
+
+STEP 5: MANDATORY MFA SETUP
+---------------------------
+On first login, you MUST set up Two-Factor Authentication:
+1. System will redirect to MFA setup page
+2. Scan QR code with Microsoft Authenticator app
+3. Enter 6-digit verification code
+4. MFA is now enabled for your account
+
+NOTE: All users are required to enable MFA for security compliance.
+
+================================================================================
+4. DATABASE CONFIGURATION
+================================================================================
+
+OPTION 1: IN-MEMORY STORAGE (DEFAULT)
+-------------------------------------
+- No configuration needed
+- Data stored in application memory
+- ⚠️ Data is NOT persistent (lost on restart)
+- Suitable for testing/development only
+
+To use:
+- Simply start the application
+- No DATABASE_URL needed
+
+OPTION 2: POSTGRESQL (RECOMMENDED FOR PRODUCTION)
+------------------------------------------------
+Step 1: Set up PostgreSQL
+1. Install PostgreSQL on your server
+2. Create a new database
+3. Note the connection details
+
+Step 2: Configure Database URL
+1. Create or edit .env file in root directory
+2. Add: DATABASE_URL=postgresql://username:password@host:port/database
+3. Save the file
+4. Restart application
+
+Step 3: Verify Connection
+Check console output for:
+"✅ PostgreSQL connection successful"
+"✅ Using PostgreSQL database - data will persist"
+
+AUTOMATIC DATABASE INITIALIZATION:
+- Tables are auto-created on first run
+- Schema migrations run automatically
+- Default admin user is created
+- No manual SQL needed
+
+DATABASE MANAGEMENT:
+- Access: Administration → Database
+- Features: Backup, Restore, Optimize, Schedule maintenance
+
+================================================================================
+5. USER MANAGEMENT & PERMISSIONS
+================================================================================
+
+CREATING USERS
+--------------
+Method 1: Through Web Interface
+1. Navigate to "User Management"
+2. Click "Add User"
+3. Fill in required fields:
+   - Username (unique)
+   - First Name, Last Name
+   - Email address
+   - Department
+   - Initial password
+4. Set role or admin status
+5. Click "Save"
+
+Method 2: Bulk Import (CSV)
+1. Prepare CSV with columns:
+   username,firstName,lastName,email,department,password,isAdmin
+2. Go to User Management → Import
+3. Upload CSV file
+4. Review and confirm
+
+USER ROLES & PERMISSIONS
+------------------------
+Built-in Roles:
+1. Administrator
+   - Full system access
+   - All permissions granted
+   - Can manage users and settings
+
+2. Asset Manager
+   - Asset lifecycle management
+   - Checkout/checkin operations
+   - Inventory management
+   - Limited admin access
+
+3. Department User
+   - View department assets
+   - Request asset assignments
+   - Limited editing
+
+4. Read-Only User
+   - View-only access
+   - No editing capabilities
+   - Reporting access
+
+PERMISSION MODULES:
+Each user can have granular permissions for:
+- Assets (View, Edit, Add, Delete)
+- Components (View, Edit, Add, Delete)
+- Accessories (View, Edit, Add, Delete)
+- Licenses (View, Edit, Add, Delete)
+- Users (View, Edit, Add, Delete)
+- VM Monitoring (View, Edit, Add, Delete)
+- Network Discovery (View, Edit, Add, Delete)
+- BitLocker Keys (View, Edit, Add, Delete)
+- Reports (View, Edit, Add)
+- Admin Panel (View, Edit, Add)
+
+ASSIGNING PERMISSIONS:
+1. Go to Admin → User Permissions
+2. Select user
+3. Choose role OR set custom permissions
+4. Save changes
+
+MFA MANAGEMENT:
+- View status: Admin → MFA Management
+- Disable MFA: Select user → Disable MFA
+- Force reset: Requires admin password
+
+PASSWORD MANAGEMENT:
+- Reset passwords: Admin → Password Management
+- Force password change on next login
+- Enforce password policies
+
+================================================================================
+6. SYSTEM CONFIGURATION
+================================================================================
+
+ACCESS SYSTEM SETTINGS:
+Administration → System Setup
+
+GENERAL SETTINGS
+---------------
+- Site Name: Your organization name
+- Site URL: Application URL
+- Default Language: Interface language
+- Default Timezone: System timezone
+- Public Registration: Enable/disable self-registration
+
+COMPANY INFORMATION
+------------------
+- Company Name: Organization name
+- Address: Physical address
+- Contact Info: Email/phone
+- Company Logo: URL to logo image
+
+EMAIL CONFIGURATION (SMTP)
+--------------------------
+Required for notifications:
+1. Sender Email: noreply@yourorg.com
+2. SMTP Server: smtp.gmail.com (or your provider)
+3. SMTP Port: 587 (TLS) or 465 (SSL)
+4. Username: Your SMTP username
+5. Password: Your SMTP password/app password
+6. Security: TLS/SSL
+
+Test Configuration:
+- Click "Test Email Configuration"
+- Check inbox for test email
+- Verify delivery
+
+ASSET SETTINGS
+-------------
+- Asset Tag Prefix: Default prefix (e.g., "SRPH")
+- Auto-increment: Enable automatic tag generation
+- Checkout/Checkin: Enable workflows
+- Warranties: Enable warranty tracking
+- Depreciation: Enable depreciation calculations
+
+SECURITY SETTINGS
+----------------
+- Session Timeout: 120 minutes (default)
+- Max Login Attempts: 5 (default)
+- Account Lockout: After failed attempts
+- Password Policy:
+  * Minimum length: 8 characters
+  * Require uppercase: Yes
+  * Require special chars: Yes
+  * Password expiration: 90 days
+
+NOTIFICATION SETTINGS
+--------------------
+Configure email alerts for:
+- Asset Checkout: Notify on assignment
+- Asset Checkin: Notify on return
+- Warranty Expiration: Alert 30 days before
+- License Expiration: Alert 30 days before
+- IAM Account Expiration: Daily check
+- VM Expiration: Daily check
+- System Maintenance: Scheduled notifications
+
+AUTOMATIC TASKS:
+- Daily expiration checks (runs at startup + every 24 hours)
+- Email notifications sent automatically
+- Status updates for expired items
+
+================================================================================
+7. SECURITY FEATURES (MFA & ENCRYPTION)
+================================================================================
+
+TWO-FACTOR AUTHENTICATION (MFA)
+-------------------------------
+ENFORCEMENT:
+- All users MUST enable MFA
+- Enforced at first login
+- Cannot bypass without setup
+- Uses Microsoft Authenticator
+
+SETUP PROCESS:
+1. User logs in with credentials
+2. System redirects to MFA setup
+3. QR code displayed
+4. User scans with Authenticator app
+5. Enter verification code
+6. MFA enabled
+
+LOGIN WITH MFA:
+1. Enter username/password
+2. System prompts for MFA code
+3. Open Authenticator app
+4. Enter 6-digit code
+5. Access granted
+
+ADMIN MFA MANAGEMENT:
+- View all users: Admin → MFA Management
+- Disable MFA: For locked accounts only
+- Emergency access: Requires admin password
+
+DATA ENCRYPTION (PII PROTECTION)
+--------------------------------
+⚠️ ENCRYPTION IS DISABLED BY DEFAULT
+
+ENABLING ENCRYPTION:
+Step 1: Generate Encryption Key
+1. Go to Tools → Secrets in Replit
+2. Click "New Secret"
+3. Name: ENCRYPTION_KEY
+4. Value: Generate random 32+ character string
+   (Example: crypto.randomBytes(32).toString('base64'))
+5. Save secret
+
+Step 2: Restart Application
+- Encryption activates automatically
+- Console shows: "✅ ENCRYPTION ENABLED"
+
+Step 3: Encrypt Existing Data
+1. Navigate to Admin → Data Encryption
+2. Click "Encrypt All Data"
+3. Enter admin password
+4. Wait for completion
+
+ENCRYPTED FIELDS:
+- User Data: email, firstName, lastName, department
+- Assets: serialNumber, macAddress, ipAddress
+- BitLocker Keys: serialNumber, identifier, recoveryKey
+- VM Inventory: requestor, vmIp, ipAddress, macAddress
+- IAM Accounts: requestor
+- IT Equipment: serialNumber
+- Monitors: assetNumber, serialNumber
+
+NOTE: Knox IDs are NOT encrypted for search functionality
+
+ENCRYPTION ALGORITHM:
+- AES-256-GCM (Authenticated Encryption)
+- Unique IV per field
+- Authentication tags for integrity
+- Backward compatible with unencrypted data
+
+DECRYPTION:
+- Admin → Data Encryption → Decrypt All Data
+- Use only for migration or key rotation
+- Requires admin password
+- ⚠️ Stores data in plain text after decryption
+
+================================================================================
+8. DAILY OPERATIONS
+================================================================================
+
+ASSET MANAGEMENT
+---------------
+Adding Assets:
+1. Navigate to "Assets"
+2. Click "Add Asset"
+3. Fill required fields:
+   - Name/Model
+   - Asset Tag (auto-generated or custom)
+   - Serial Number
+   - Category
+   - Manufacturer
+   - Purchase Date & Cost
+   - Location
+   - Status
+4. Click "Save"
+
+Checkout Process:
+1. Find asset (search or browse)
+2. Click "Checkout"
+3. Select user
+4. Set expected return date
+5. Add notes (optional)
+6. Confirm checkout
+7. Email notification sent automatically
+
+Checkin Process:
+1. Locate checked-out asset
+2. Click "Checkin"
+3. Inspect physical condition
+4. Update condition/location
+5. Add notes
+6. Complete checkin
+7. Asset status → Available
+
+Bulk Import (CSV):
+1. Assets → Import CSV
+2. Download template
+3. Fill in asset data
+4. Upload file
+5. Review data
+6. Confirm import
+
+COMPONENT MANAGEMENT
+-------------------
+- Track internal parts (RAM, CPU, HDD, GPU)
+- Assign to parent assets
+- Monitor specifications
+- Track warranties
+- Manage inventory levels
+
+ACCESSORY MANAGEMENT
+-------------------
+- Track peripherals (keyboards, mice, monitors)
+- Monitor quantities
+- Assign to users/assets
+- Track conditions
+
+LICENSE MANAGEMENT
+-----------------
+- Track software licenses
+- Monitor seat allocation
+- Alert on expiration
+- Assign to users
+- Track costs
+
+VM INVENTORY MANAGEMENT
+----------------------
+Adding VM:
+1. VM Inventory → Add VM
+2. Enter VM details:
+   - VM Name
+   - Knox ID
+   - Requestor
+   - Department
+   - Host server info
+   - IP/MAC addresses
+   - Start/End dates
+   - Approval number
+3. Save
+
+Monitoring Status:
+- System checks expiration daily
+- Sends email when overdue
+- Updates status automatically
+- View in VM Inventory list
+
+IAM ACCOUNT MANAGEMENT
+---------------------
+Adding Account:
+1. IAM Accounts → Add Account
+2. Enter details:
+   - Requestor
+   - Knox ID
+   - Permission/Role
+   - Cloud Platform (AWS/Azure/GCP)
+   - Approval ID
+   - Duration dates
+3. Save
+
+Expiration Monitoring:
+- Daily automatic checks
+- Email notifications for expired accounts
+- Status updates to 'expired_notified'
+- Prevents duplicate alerts
+
+================================================================================
+9. MONITORING & DISCOVERY
+================================================================================
+
+VM MONITORING (ZABBIX INTEGRATION)
+----------------------------------
+Setup:
+1. Navigate to Monitoring → VM Monitoring
+2. Click Settings tab
+3. Enter Zabbix configuration:
+   - Zabbix URL: http://your-zabbix-server/zabbix
+   - API Key: (Generate from Zabbix admin)
+   - Sync Interval: 5 minutes
+   - Alert Thresholds:
+     * CPU: 80%
+     * Memory: 85%
+     * Disk: 90%
+4. Click "Test Connection"
+5. Enable Auto-sync
+
+Features:
+- Real-time VM performance monitoring
+- CPU, Memory, Disk usage graphs
+- Automated alerts
+- Historical data tracking
+- Status dashboards
+
+NETWORK DISCOVERY
+----------------
+Running Scans:
+1. Monitoring → Network Discovery
+2. Configure scan parameters:
+   - Target Subnets: 192.168.1.0/24 (CIDR)
+   - Port Ranges: 22,80,443,3389
+   - DNS Servers: 107.105.134.9, 107.105.134.8
+   - Timeout: 5 seconds
+   - Retry: 3 attempts
+3. Click "Start Scan"
+4. Monitor progress
+5. Review discovered devices
+
+Results Include:
+- IP addresses
+- Hostnames
+- Open ports
+- Services detected
+- MAC addresses
+- Device types
+
+BITLOCKER KEY MANAGEMENT
+-----------------------
+🔒 SECURITY CRITICAL - Admin access only
+
+Adding Keys:
+1. BitLocker Keys → Add Key
+2. Enter device info:
+   - Serial Number
+   - Device Identifier
+   - Recovery Key (encrypted)
+   - Associated asset
+   - User assignment
+3. Save (data encrypted automatically)
+
+Retrieving Keys:
+1. Search by serial/identifier
+2. Verify authorization
+3. View recovery key
+4. Action is logged for audit
+5. Provide key to authorized user
+
+Security Features:
+- Access logging
+- Admin-only access
+- Encrypted storage
+- Audit trail
+- Emergency access procedures
+
+================================================================================
+10. BACKUP & RECOVERY
+================================================================================
+
+DATABASE BACKUP
+--------------
+Manual Backup:
+1. Administration → Database
+2. Click "Backup" tab
+3. Click "Create Backup"
+4. Enter description
+5. Wait for completion
+6. Download backup file
+
+Automated Backup:
+1. Database → Maintenance tab
+2. Enable "Automatic Backup"
+3. Set schedule:
+   - Daily at 3:00 AM (default)
+   - Retention: 30 days
+4. Enable email notifications
+5. Save settings
+
+BACKUP TYPES:
+1. SQL Backup (.sql)
+   - PostgreSQL dump
+   - Schema + data
+   - Compressed format
+   
+2. Complete Data Backup (.json)
+   - All application data
+   - JSON format
+   - Easy restoration
+
+RESTORE PROCEDURES
+-----------------
+SQL Restore:
+1. Database → Backup tab
+2. Click "Restore SQL Backup"
+3. Select backup file OR upload
+4. Confirm restoration
+5. System restores data
+6. Application restarts
+
+Complete Data Restore:
+1. Database → Backup tab
+2. Click "Restore All Data"
+3. Upload JSON backup
+4. Verify file format
+5. Confirm restoration
+6. Data is imported
+
+⚠️ RESTORATION WARNING:
+- All current data will be replaced
+- Create backup before restoring
+- Cannot be undone
+- Requires admin password
+
+DISASTER RECOVERY PLAN
+----------------------
+Scenario 1: Application Crash
+- Recovery Time: 5 minutes
+- Data Loss: None
+- Procedure: Restart application service
+
+Scenario 2: Database Corruption
+- Recovery Time: 30 minutes
+- Data Loss: Up to 24 hours
+- Procedure: Restore from latest backup
+
+Scenario 3: Server Failure
+- Recovery Time: 2-4 hours
+- Data Loss: Up to 24 hours
+- Procedure: Deploy to new server, restore backup
+
+Scenario 4: Complete Site Disaster
+- Recovery Time: 4-8 hours
+- Data Loss: Up to 24 hours
+- Procedure: Deploy to alternative site, restore backup
+
+================================================================================
+11. TROUBLESHOOTING
+================================================================================
+
+COMMON ISSUES & SOLUTIONS
+
+1. PORT 5000 ALREADY IN USE
+---------------------------
+Windows:
+netstat -ano | findstr :5000
+taskkill /PID <process_id> /F
+
+Linux/Mac:
+lsof -i :5000
+kill -9 <process_id>
+
+2. DATABASE CONNECTION FAILED
+-----------------------------
+Symptoms: "Failed to connect to database"
+Solutions:
+- Check DATABASE_URL in environment
+- Verify PostgreSQL is running
+- Test connection in Replit Database tab
+- Check firewall settings
+- Verify credentials
+- Restart application
+
+3. ENCRYPTION ERRORS
+-------------------
+Error: "Failed to decrypt data"
+Cause: Encryption key changed or mismatch
+Solutions:
+- Restore original ENCRYPTION_KEY
+- OR decrypt data with old key
+- OR clear database and start fresh
+
+4. MFA ISSUES
+------------
+User Locked Out:
+- Admin → MFA Management
+- Select user
+- Disable MFA
+- User can login and re-enable
+
+QR Code Not Scanning:
+- Try manual entry
+- Verify time sync on device
+- Use different authenticator app
+
+5. EMAIL NOT SENDING
+-------------------
+Check:
+- SMTP configuration correct
+- Test email works
+- Check spam/junk folder
+- Verify email service not blocking
+- Check application logs
+
+6. SLOW PERFORMANCE
+------------------
+Causes & Solutions:
+- Large datasets → Enable pagination
+- Slow queries → Optimize database indexes
+- Network latency → Check connection
+- High CPU/Memory → Monitor resources
+- Database optimization → Run maintenance
+
+7. SESSION EXPIRED FREQUENTLY
+----------------------------
+- Increase session timeout (System Setup → Security)
+- Check for clock drift
+- Verify session store is working
+- Check browser cookies enabled
+
+ERROR CODES REFERENCE
+--------------------
+AUTH_001: Invalid credentials → Reset password
+AUTH_002: Account locked → Unlock in user management
+DB_001: Database connection failed → Check connection
+DB_002: Query timeout → Optimize query
+PERM_001: Insufficient permissions → Grant permissions
+SYS_001: Configuration error → Review settings
+
+LOG LOCATIONS
+------------
+Application Logs: Browser console + server console
+Activity Logs: Administration → Activities
+Error Logs: Browser developer tools
+System Logs: Server console output
+Email Logs: LOGS/email_notifications.log
+Auth Logs: LOGS/auth/auth_YYYY-MM-DD.log
+
+================================================================================
+12. MAINTENANCE TASKS
+================================================================================
+
+DAILY TASKS
+----------
+□ Monitor system logs for errors
+□ Review backup status
+□ Check email notification delivery
+□ Monitor disk space usage
+□ Review user activity logs
+□ Check for expired assets/licenses
+
+WEEKLY TASKS
+-----------
+□ Run database optimization
+□ Review and archive old activities
+□ Check for system updates
+□ Review user permissions
+□ Test backup restoration
+□ Clean up old log files
+
+MONTHLY TASKS
+------------
+□ Review and update security policies
+□ Audit user accounts and permissions
+□ Test disaster recovery procedures
+□ Review and update documentation
+□ Check for software updates
+□ Perform security assessment
+
+QUARTERLY TASKS
+--------------
+□ Comprehensive system backup
+□ Security audit and penetration testing
+□ Review and update password policies
+□ User access review and cleanup
+□ Performance optimization
+□ Capacity planning review
+
+DATABASE MAINTENANCE
+-------------------
+Automatic (Daily):
+- Index rebuilding
+- Statistics updates
+- Session cleanup
+- Cache clearing
+
+Manual (Monthly):
+1. Database → Maintenance tab
+2. Click "Optimize Database"
+3. Select tables to optimize
+4. Run optimization
+5. Review results
+
+LOG ROTATION
+-----------
+Automatic log rotation:
+- Daily logs created
+- 30-day retention
+- Automatic cleanup
+- Archived to LOGS/ directory
+
+Manual cleanup:
+- Delete logs older than retention
+- Archive important logs
+- Compress old log files
+
+PERFORMANCE MONITORING
+---------------------
+Monitor:
+- CPU usage
+- Memory usage
+- Disk I/O
+- Network bandwidth
+- Database query performance
+- Response times
+
+Tools:
+- Database → Status tab
+- System Logs
+- Browser developer tools
+
+SECURITY AUDITS
+--------------
+Regular checks:
+- Review failed login attempts
+- Audit user permissions
+- Check MFA compliance
+- Review BitLocker key access
+- Verify encryption status
+- Check for suspicious activities
+
+USER TRAINING
+------------
+Required training for:
+- New administrators
+- Asset managers
+- Department users
+- Help desk staff
+
+Topics:
+- System navigation
+- Asset management
+- Checkout/checkin procedures
+- Reporting
+- Security best practices
+
+SYSTEM UPDATES
+-------------
+Update procedure:
+1. Create full backup
+2. Test in development environment
+3. Schedule maintenance window
+4. Notify users
+5. Apply updates
+6. Verify functionality
+7. Monitor for issues
+
+Rollback procedure:
+1. Stop application
+2. Restore from backup
+3. Verify data integrity
+4. Restart application
+5. Test functionality
+
+================================================================================
+                            QUICK REFERENCE
+================================================================================
+
+DEFAULT CREDENTIALS:
+Username: admin
+Password: admin123
+⚠️ CHANGE IMMEDIATELY!
+
+IMPORTANT URLS:
+Application: http://0.0.0.0:5000
+User Manual: /public/confluence-user-guide.html
+Admin Guide: /public/admin-confluence-guide.html
+
+KEY DIRECTORIES:
+Logs: /LOGS/
+Backups: /backups/
+Uploads: /uploads/
+
+SUPPORT CONTACTS:
+Primary: Nikkel Jimenez (jimenez.n)
+Department: IT/MIS
+
+EMERGENCY PROCEDURES:
+1. System Down: Restart application
+2. Data Loss: Restore from backup
+3. Security Breach: Disable affected accounts
+4. Database Corrupt: Restore from latest backup
+
+HELPFUL COMMANDS:
+Install dependencies: npm install
+Start development: npm run dev
+Start production: npm start
+Encrypt data: npm run encrypt-data
+Decrypt data: npm run decrypt-data
+
+================================================================================
+                          END OF ADMIN GUIDE
+================================================================================
+
+This guide is continuously updated. For the latest version, check:
+- Documentation section in application
+- System help pages
+- Contact system administrator
+
+Version: 2.0
+Last Updated: November 2024
+System: SRPH-MIS Inventory Management System
+Environment: Local Deployment
+
+For additional support or questions not covered in this guide, please contact
+the IT department or submit a ticket through the Help menu.
+
+================================================================================

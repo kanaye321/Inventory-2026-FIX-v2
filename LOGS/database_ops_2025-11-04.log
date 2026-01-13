@@ -1,0 +1,12 @@
+[2025-11-04T07:40:27.374Z] [DATABASE] {
+  "type": "migration",
+  "status": "completed",
+  "details": "Server startup logging test",
+  "timestamp": "2025-11-04T07:40:27.374Z"
+}
+[2025-11-04T07:41:21.081Z] [DATABASE] {
+  "type": "migration",
+  "status": "completed",
+  "details": "Server startup logging test",
+  "timestamp": "2025-11-04T07:41:21.081Z"
+}

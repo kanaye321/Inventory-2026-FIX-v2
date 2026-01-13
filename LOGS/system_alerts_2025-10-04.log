@@ -1,0 +1,24 @@
+[2025-10-04T05:12:52.409Z] [ALERT] {
+  "level": "info",
+  "message": "Server started successfully",
+  "details": {
+    "port": 5000
+  },
+  "timestamp": "2025-10-04T05:12:52.409Z"
+}
+[2025-10-04T14:55:18.568Z] [ALERT] {
+  "level": "info",
+  "message": "Server started successfully",
+  "details": {
+    "port": 5000
+  },
+  "timestamp": "2025-10-04T14:55:18.568Z"
+}
+[2025-10-04T14:56:44.580Z] [ALERT] {
+  "level": "info",
+  "message": "Server started successfully",
+  "details": {
+    "port": 5000
+  },
+  "timestamp": "2025-10-04T14:56:44.580Z"
+}
